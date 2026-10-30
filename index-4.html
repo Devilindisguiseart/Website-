@@ -1,0 +1,1378 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nexus Prime</title>
+<meta name="description" content="Nexus Prime: social media management, influencer management and digital brand strategy for creators, brands and businesses. Established 2018.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: dark editorial single-column flow, wide hero with a large NP monogram, gold used only as fine lines and accents. */
+:root{
+  --bg:#0B0B0D; --bg2:#121216; --card:#18181D; --gold:#C6A45A; --gold-hi:#E2C982;
+  --fg:#F5F2EB; --fg2:#B3B0A9; --muted:#85838B; --line:#2C2B30;
+  --serif:'Cormorant Garamond','Playfair Display',Georgia,serif;
+  --sans:'Manrope','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 var(--sans);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.08;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,4.6vw,3.4rem)}
+h3{font-size:1.5rem}
+p{margin:0}
+.wrap{max-width:1180px;margin-inline:auto}
+section{padding-block:clamp(64px,10vw,120px);position:relative}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+.lede{color:var(--fg2);max-width:60ch;margin-top:18px}
+.rule{height:1px;background:var(--line);position:relative;overflow:hidden}
+.rule::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:translateX(-100%)}
+.rule.in::after{transition:transform 1.6s var(--ease);transform:translateX(0)}
+.small{font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:#111;padding:8px 14px;z-index:100}
+.skip:focus{left:8px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border:1px solid var(--gold);background:transparent;color:var(--fg);font-weight:600;font-size:.88rem;letter-spacing:.06em;border-radius:2px;transition:transform .35s var(--ease),background .35s,color .35s,box-shadow .35s;position:relative}
+.btn .ar{transition:transform .35s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px -12px rgba(198,164,90,.5);border-color:var(--gold-hi)}
+.btn:hover .ar{transform:translateX(4px)}
+.btn:active{transform:translateY(0)}
+.btn.solid{background:var(--gold);color:#17130a}
+.btn.solid:hover{background:var(--gold-hi)}
+.btn.ghost{border-color:var(--line);color:var(--fg2)}
+.btn.ghost:hover{color:var(--fg);border-color:var(--gold)}
+.btn:disabled{opacity:.4;pointer-events:none}
+.btn.sm{padding:10px 18px;font-size:.8rem}
+.chip{border:1px solid var(--line);background:transparent;color:var(--fg2);padding:8px 16px;border-radius:99px;font-size:.82rem;transition:all .3s var(--ease)}
+.chip:hover{border-color:var(--gold);color:var(--fg)}
+.chip[aria-pressed="true"],.chip[aria-selected="true"]{border-color:var(--gold);background:rgba(198,164,90,.12);color:var(--gold-hi)}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s;overflow:hidden}
+#intro.done{opacity:0;visibility:hidden;pointer-events:none}
+#intro::before{content:"";position:absolute;width:70vmax;height:70vmax;background:radial-gradient(closest-side,rgba(198,164,90,.16),transparent);opacity:0;animation:glow 1.4s .1s var(--ease) forwards}
+@keyframes glow{to{opacity:1}}
+.wm{display:flex;font-family:var(--serif);font-size:clamp(2rem,9vw,4.6rem);letter-spacing:.14em;font-weight:500;color:var(--fg);position:relative}
+.wm span{display:inline-block;opacity:0;transform:translateY(.5em);filter:blur(6px);animation:lt .8s var(--ease) forwards;animation-delay:calc(.55s + var(--i)*.07s);max-width:1.2em;overflow:hidden;white-space:pre;transition:max-width .8s var(--ease),opacity .6s,letter-spacing .8s,margin .8s}
+@keyframes lt{to{opacity:1;transform:none;filter:none}}
+.wm.mono span.x{max-width:0;opacity:0!important;margin:0}
+.wm.mono span.k{color:var(--gold-hi)}
+.wm.mono{letter-spacing:.02em}
+.wm::after{content:"";position:absolute;left:-10%;top:0;bottom:0;width:30%;background:linear-gradient(100deg,transparent,rgba(226,201,130,.35),transparent);transform:translateX(-120%) skewX(-12deg);animation:sweep 1.4s 1.5s ease-in-out forwards;mix-blend-mode:screen;pointer-events:none}
+@keyframes sweep{to{transform:translateX(480%) skewX(-12deg)}}
+#introSkip{position:absolute;bottom:max(24px,env(safe-area-inset-bottom,0px));right:24px;background:none;border:0;color:var(--muted);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+#introSkip:hover{color:var(--gold-hi)}
+
+/* nav */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));transition:background .4s,border-color .4s,backdrop-filter .4s;border-bottom:1px solid transparent}
+header.nav.solid{background:rgba(11,11,13,.88);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
+.nav-in{max-width:1180px;margin:auto;height:68px;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.25rem;letter-spacing:.14em}
+.logo .np{width:34px;height:34px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold-hi);font-size:1.05rem;letter-spacing:.02em}
+.logo .full{display:none}
+.nav-links{display:none;gap:26px;margin-left:auto}
+.nav-links a{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2);position:relative;padding-block:6px;transition:color .3s}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--fg)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-r{margin-left:auto;display:flex;gap:10px;align-items:center}
+.icon-btn{width:40px;height:40px;border:1px solid var(--line);background:transparent;border-radius:2px;display:grid;place-items:center;color:var(--fg2);transition:all .3s}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold-hi)}
+.nav-cta{display:none}
+@media(min-width:980px){.nav-links{display:flex;margin-left:auto}.nav-r{margin-left:0}.nav-cta{display:inline-flex}.burger{display:none}.logo .full{display:inline}}
+#mmenu{position:fixed;inset:0;z-index:55;background:var(--bg);padding:calc(90px + env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-left,0px)) 40px;display:flex;flex-direction:column;gap:6px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:all .4s var(--ease);overflow:auto}
+#mmenu.open{opacity:1;visibility:visible;transform:none}
+#mmenu a{font-family:var(--serif);font-size:2rem;padding:8px 0;border-bottom:1px solid var(--line)}
+#mmenuClose{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+
+/* command panel */
+#cmd{position:fixed;inset:0;z-index:150;background:rgba(5,5,6,.7);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:12vh 16px 16px}
+#cmd.open{display:flex}
+.cmd-box{width:min(560px,100%);background:var(--bg2);border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.6);animation:pop .3s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}}
+.cmd-box input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);padding:18px 20px;font-size:1rem;outline:none}
+.cmd-box input:focus-visible{outline:none;border-bottom-color:var(--gold)}
+.cmd-list{max-height:48vh;overflow:auto;padding:8px;margin:0;list-style:none}
+.cmd-list button{width:100%;text-align:left;background:none;border:0;padding:12px;display:flex;justify-content:space-between;gap:12px;color:var(--fg2);border-radius:2px}
+.cmd-list button small{color:var(--muted)}
+.cmd-list button[aria-selected="true"],.cmd-list button:hover{background:rgba(198,164,90,.1);color:var(--fg)}
+kbd{border:1px solid var(--line);padding:1px 6px;font:600 .7rem var(--sans);border-radius:3px;color:var(--muted)}
+
+/* hero */
+.hero{padding-block:clamp(40px,7vw,90px) clamp(60px,8vw,100px);overflow:hidden}
+.hero-grid{display:grid;gap:40px;align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.25fr .75fr}}
+.glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),rgba(198,164,90,.10),transparent 60%)}
+.hero h1{font-size:clamp(2.7rem,8vw,6rem);font-weight:500;letter-spacing:-.01em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 .ln>span{display:block}
+.hero h1 em{font-style:italic;color:var(--gold-hi)}
+.hero .lede{font-size:1.05rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:44px;color:var(--muted);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
+.hero-meta b{color:var(--fg2);font-weight:600}
+.np-stage{perspective:900px;display:grid;place-items:center;min-height:260px}
+.np-mark{width:min(78vw,340px);aspect-ratio:1;position:relative;display:grid;place-items:center;transform-style:preserve-3d;transition:transform .5s var(--ease);border:1px solid var(--line);background:linear-gradient(160deg,var(--card),var(--bg2))}
+.np-mark::before{content:"";position:absolute;inset:14px;border:1px solid rgba(198,164,90,.35)}
+.np-mark::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(226,201,130,.22) 50%,transparent 65%);transform:translateX(-120%);animation:sw 6s 1.5s ease-in-out infinite}
+@keyframes sw{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.np-mark span{font-family:var(--serif);font-size:clamp(5rem,20vw,9rem);color:var(--gold-hi);letter-spacing:-.03em;transform:translateZ(40px);line-height:1}
+.scroll-cue{display:flex;align-items:center;gap:12px;margin-top:56px;color:var(--muted);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+.scroll-cue i{width:1px;height:38px;background:var(--line);position:relative;overflow:hidden}
+.scroll-cue i::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:var(--gold);animation:drop 2s infinite}
+@keyframes drop{to{top:110%}}
+
+/* reveal */
+.motion .pre{opacity:0;transform:translateY(22px)}
+.motion .pre.show{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0s)}
+.hero-ready .ln>span{animation:up 1s var(--ease) both;animation-delay:calc(var(--i)*.14s)}
+@keyframes up{from{transform:translateY(105%)}}
+.hero-ready .fade{animation:fi 1s .45s var(--ease) both}
+.hero-ready .fade.b{animation-delay:.65s}
+.hero-ready .fade.c{animation-delay:.85s}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}}
+
+/* cards */
+.card{background:var(--card);border:1px solid var(--line);padding:28px;position:relative;transition:border-color .4s,transform .4s var(--ease),box-shadow .4s}
+.card:hover{border-color:rgba(198,164,90,.55);box-shadow:0 18px 50px -24px rgba(198,164,90,.35)}
+.tilt{transform-style:preserve-3d;will-change:transform}
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+
+/* explorer */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:30px}
+.svc-list{display:grid;gap:10px;margin-top:22px}
+.svc{border:1px solid var(--line);background:var(--card);display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px;padding:6px 6px 6px 20px;transition:all .3s var(--ease);min-width:0}
+.svc.sel{border-color:var(--gold);background:linear-gradient(90deg,rgba(198,164,90,.1),var(--card))}
+.svc-name{background:none;border:0;text-align:left;padding:12px 0;display:flex;flex-direction:column;gap:2px;min-width:0}
+.svc-name b{font-weight:600}
+.svc-name small{color:var(--fg2);font-size:.84rem}
+.pick{width:44px;height:44px;border:1px solid var(--line);background:transparent;display:grid;place-items:center;color:var(--gold);transition:all .3s}
+.pick:hover{border-color:var(--gold)}
+.svc.sel .pick{background:var(--gold);color:#17130a;border-color:var(--gold)}
+.svc-detail{grid-column:1/-1;padding:0 14px 14px 0;color:var(--fg2);font-size:.88rem}
+.cat-note{color:var(--fg2);margin-top:22px;max-width:62ch}
+
+/* packages */
+.pk{display:flex;flex-direction:column;gap:14px;padding:32px 28px}
+.pk .badge{position:absolute;top:-1px;right:24px;background:var(--gold);color:#17130a;font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:5px 12px;transform:translateY(-50%)}
+.pk .tag{font-family:var(--serif);font-style:italic;color:var(--fg2);font-size:1.1rem}
+.price{font-family:var(--serif);font-size:3rem;line-height:1;color:var(--fg)}
+.price small{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin-left:6px;letter-spacing:.06em}
+.hrs{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.pk ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.92rem;color:var(--fg2)}
+.pk li{padding-left:22px;position:relative}
+.pk li::before{content:"";position:absolute;left:0;top:.65em;width:10px;height:1px;background:var(--gold)}
+.pk details{border-top:1px solid var(--line);padding-top:12px;font-size:.9rem;color:var(--fg2)}
+.pk summary{cursor:pointer;color:var(--fg);font-weight:600;font-size:.85rem;letter-spacing:.05em;list-style:none}
+.pk summary::after{content:" +";color:var(--gold)}
+.pk details[open] summary::after{content:" −"}
+.pk h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:14px 0 6px;font-weight:600}
+.pk .btn{margin-top:auto;justify-content:center}
+.pk.genesis{border-color:rgba(198,164,90,.45)}
+.pk.prestige{border-color:var(--gold);background:linear-gradient(180deg,#1d1c20,var(--card));box-shadow:0 0 0 1px rgba(198,164,90,.25),0 30px 70px -40px rgba(198,164,90,.5)}
+.pk.sovereign{border-color:var(--gold-hi);background:linear-gradient(180deg,#201e1a,var(--card) 60%);box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 5px rgba(226,201,130,.4),0 40px 90px -45px rgba(226,201,130,.55)}
+.pk.chosen{outline:2px solid var(--gold-hi);outline-offset:4px}
+.pk .btn[aria-pressed="true"]{background:var(--gold);color:#17130a}
+.tbl-wrap{overflow-x:auto;margin-top:28px;border:1px solid var(--line)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:.9rem}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-weight:600;font-family:var(--serif);font-size:1.15rem;background:var(--bg2)}
+td:first-child{color:var(--muted);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+tr:last-child td{border-bottom:0}
+.fit{margin-top:44px;border:1px solid var(--line);background:var(--bg2);padding:28px}
+.q{margin-top:16px}
+.q p{font-weight:600;margin-bottom:10px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+
+/* add-ons */
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:30px}
+.search{flex:1 1 240px;background:var(--card);border:1px solid var(--line);padding:12px 16px;border-radius:2px;outline:none;min-width:0}
+.search:focus{border-color:var(--gold)}
+.addon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:12px;margin-top:22px}
+.ao{background:var(--card);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px;transition:border-color .3s,opacity .35s,transform .35s var(--ease);min-width:0}
+.ao.sel{border-color:var(--gold)}
+.ao.hide{display:none}
+.ao.fadein{animation:fi .45s var(--ease)}
+.ao header{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.ao h4{font-family:var(--sans);font-weight:600;font-size:.95rem;line-height:1.35}
+.ao small{color:var(--muted);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+.ao p{color:var(--fg2);font-size:.86rem}
+.ao .row{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
+.ao .quote{font-size:.76rem;color:var(--gold);letter-spacing:.06em}
+.empty{padding:40px;text-align:center;color:var(--muted);border:1px dashed var(--line);margin-top:22px}
+
+/* globe */
+.globe-grid{display:grid;gap:30px;margin-top:36px;align-items:center}
+@media(min-width:900px){.globe-grid{grid-template-columns:1.1fr .9fr}}
+.globe-box{position:relative;aspect-ratio:1;max-width:560px;width:100%;margin-inline:auto;touch-action:pan-y}
+#globe{width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+#globe:active{cursor:grabbing}
+.mk-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:8px}
+.mk{display:flex;align-items:center;gap:12px;text-align:left;background:var(--card);border:1px solid var(--line);padding:12px 14px;transition:all .35s var(--ease)}
+.mk .fl{font-size:1.5rem;line-height:1}
+.mk b{display:block;font-weight:600;font-size:.92rem}
+.mk small{color:var(--muted);font-size:.72rem}
+.mk[aria-pressed="true"]{border-color:var(--gold);background:rgba(198,164,90,.1);transform:translateX(4px)}
+.mk-info{margin-top:16px;border:1px solid var(--line);background:var(--bg2);padding:22px;min-height:150px}
+.mk-info h3{display:flex;align-items:center;gap:12px}
+.mk-info .fl{font-size:2rem}
+
+/* thoughtful */
+.tcard{min-height:230px;display:flex;flex-direction:column;justify-content:space-between;gap:30px;overflow:hidden}
+.tcard .gl{font-family:var(--serif);font-size:3.2rem;color:var(--gold);line-height:1;opacity:.9}
+.tcard p{color:var(--fg2);font-size:.92rem;margin-top:10px}
+
+/* diag */
+.diag{border:1px solid var(--line);background:var(--bg2);padding:clamp(22px,4vw,44px);margin-top:34px}
+.bar{height:2px;background:var(--line);margin-bottom:26px}
+.bar i{display:block;height:100%;background:var(--gold);width:0;transition:width .5s var(--ease)}
+.diag h3{margin-bottom:6px}
+.diag .opts{margin-top:20px}
+.dnav{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+.sum-grid{display:grid;gap:22px;margin-top:20px}
+.sum-grid h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:600}
+.sum-grid ul{margin:0;padding-left:18px;color:var(--fg2)}
+
+/* portfolio */
+.concept{display:grid;gap:0}
+@media(min-width:800px){.concept{grid-template-columns:1fr 1fr}}
+.concept .vis{min-height:260px;background:radial-gradient(circle at 30% 30%,rgba(198,164,90,.2),transparent 60%),repeating-linear-gradient(135deg,var(--card) 0 14px,var(--bg2) 14px 28px);display:grid;place-items:center;font-family:var(--serif);font-size:2rem;color:var(--fg2);clip-path:inset(0);border:1px solid var(--line)}
+.concept .txt{padding:30px;border:1px solid var(--line);border-left:0;background:var(--card)}
+.label{display:inline-block;border:1px solid var(--gold);color:var(--gold-hi);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;margin-bottom:14px}
+dl{margin:18px 0 0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:.88rem}
+dt{color:var(--muted)} dd{margin:0;color:var(--fg2)}
+
+/* trust */
+.quote-card{display:flex;flex-direction:column;gap:20px;justify-content:space-between}
+.quote-card blockquote{margin:0;font-family:var(--serif);font-size:1.28rem;line-height:1.4}
+.who{display:flex;align-items:center;gap:12px;font-size:.85rem}
+.who i{width:38px;height:38px;border:1px solid var(--gold);display:grid;place-items:center;font-style:normal;color:var(--gold-hi);font-size:.75rem;letter-spacing:.06em}
+.who small{display:block;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:34px}
+.stat b{font-family:var(--serif);font-weight:500;font-size:3rem;color:var(--gold-hi);display:block;line-height:1}
+.stat span{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* process */
+.tl{position:relative;margin-top:44px;display:grid;gap:30px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl .prog{position:absolute;left:7px;top:6px;width:1px;background:var(--gold);height:0;transition:height .2s linear}
+.step{position:relative}
+.step::before{content:"";position:absolute;left:-34px;top:6px;width:15px;height:15px;border:1px solid var(--line);background:var(--bg);transition:all .4s}
+.step.on::before{border-color:var(--gold);background:var(--gold)}
+.step h3{font-size:1.6rem}
+.step p{color:var(--fg2);max-width:56ch;margin-top:6px}
+@media(min-width:900px){.tl{grid-template-columns:repeat(4,1fr);padding:34px 0 0;gap:24px}.tl::before{left:0;right:0;top:7px;bottom:auto;width:auto;height:1px}.tl .prog{left:0;top:7px;height:1px;width:0;transition:width .2s linear}.step::before{left:0;top:-34px}}
+
+/* faq */
+.faq{margin-top:26px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;gap:20px;font-family:var(--serif);font-size:1.4rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{color:var(--gold);font-style:normal;transition:transform .4s var(--ease);flex:none}
+.faq details[open] summary i{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;color:var(--fg2);max-width:70ch;animation:fi .4s var(--ease)}
+.faq details.hide{display:none}
+
+/* enquiry */
+.enq{display:grid;gap:26px}
+@media(min-width:960px){.enq{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--line);padding:13px 14px;border-radius:2px;width:100%;min-width:0}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);outline:none}
+.field textarea{min-height:110px;resize:vertical}
+.field .err{color:#e6a08a;font-size:.8rem}
+.sel-sum{display:flex;flex-direction:column;gap:14px}
+.sel-sum ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sel-sum li{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);padding:9px 12px;font-size:.88rem;align-items:center}
+.sel-sum li button{background:none;border:0;color:var(--muted);font-size:1.1rem;padding:0 6px}
+.sel-sum li button:hover{color:var(--gold-hi)}
+.sel-sum h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+.brief-out{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);padding:16px;font-size:.86rem;color:var(--fg2);margin-top:14px;user-select:all}
+.status{margin-top:14px;color:var(--gold-hi);font-size:.9rem}
+.contact-line{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:18px;font-size:.92rem;color:var(--fg2)}
+.contact-line b{color:var(--fg);font-weight:600}
+
+/* cta band */
+.band{background:radial-gradient(70% 120% at 50% 0%,rgba(198,164,90,.16),transparent 70%),var(--bg2);border-block:1px solid var(--line);text-align:center;margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.band h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.band .lede{margin-inline:auto}
+.band .cta-row{justify-content:center}
+
+/* persistent bar */
+#dock{position:fixed;left:0;right:0;bottom:0;z-index:45;background:rgba(18,18,22,.95);backdrop-filter:blur(10px);border-top:1px solid var(--gold);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));transform:translateY(110%);transition:transform .5s var(--ease);display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+#dock.show{transform:none}
+#dock .t{font-size:.88rem;color:var(--fg2);min-width:0;flex:1 1 200px}
+#dock .t b{color:var(--gold-hi)}
+
+.rec{display:grid;gap:22px;margin-top:6px}
+.rec-pk{border:1px solid var(--gold);background:var(--card);padding:24px;display:grid;gap:6px}
+.rec-pk .price{font-size:2.4rem}
+.why{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.why li{padding-left:22px;position:relative;color:var(--fg2);font-size:.92rem}
+.why li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:1px;background:var(--gold)}
+.rec h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+.rec-ao{border:1px solid var(--line);padding:14px 16px;background:var(--bg)}
+.rec-ao b{font-weight:600}
+.rec-ao p{color:var(--fg2);font-size:.88rem;margin-top:4px}
+.pk-act{margin-top:auto;display:grid;gap:10px}
+.pk .pk-act .btn{margin-top:0}
+#dlg{position:fixed;inset:0;z-index:160;background:rgba(5,5,6,.72);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:16px}
+#dlg.open{display:flex}
+.dlg-box{width:min(680px,100%);max-height:88vh;overflow:auto;background:var(--bg2);border:1px solid var(--gold);box-shadow:0 30px 90px rgba(0,0,0,.7);padding:clamp(20px,4vw,36px);position:relative;animation:pop .3s var(--ease)}
+.dlg-box h3{font-size:2rem;padding-right:44px}
+.dlg-x{position:absolute;top:14px;right:14px}
+.dlg-box h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:22px 0 8px}
+.dlg-box ul{margin:0;padding-left:18px;color:var(--fg2);display:grid;gap:4px;font-size:.92rem}
+.dlg-box p{color:var(--fg2);font-size:.92rem}
+.dlg-note{margin-top:20px;border-top:1px solid var(--line);padding-top:14px;font-size:.8rem!important;color:var(--muted)!important}
+.dlg-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.solid3d{width:100%;height:120px;display:block;margin:-8px 0 -4px;pointer-events:none}
+/* ---- premium layer ---- */
+::selection{background:rgba(198,164,90,.35);color:var(--fg)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+#prog{position:absolute;left:0;bottom:-1px;height:1px;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-hi));pointer-events:none}
+.np-stage{position:relative}
+#nexusNet{position:absolute;left:50%;top:50%;width:150%;max-width:none;aspect-ratio:1;transform:translate(-50%,-50%);pointer-events:none}
+.np-mark{z-index:1}
+.card::after,.ao::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .35s;background:radial-gradient(240px circle at var(--sx,50%) var(--sy,50%),rgba(198,164,90,.11),transparent 70%)}
+.card:hover::after,.ao:hover::after{opacity:1}
+.ao{position:relative}
+.btn.solid{background-image:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);background-size:250% 100%;background-position:150% 0;background-repeat:no-repeat}
+.btn.solid:hover{background-position:-50% 0;transition:background-position .9s var(--ease),transform .35s var(--ease),box-shadow .35s,background-color .35s}
+.marq{overflow:hidden;border-bottom:1px solid var(--line);padding-block:18px;background:var(--bg2);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)))}
+.marq-in{display:flex;gap:44px;width:max-content;animation:mq 46s linear infinite}
+.marq:hover .marq-in{animation-play-state:paused}
+.marq span{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fg2);display:flex;align-items:center;gap:44px;white-space:nowrap}
+.marq span::after{content:"";width:5px;height:5px;background:var(--gold);transform:rotate(45deg);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* portfolio sample layout */
+.vis.mock{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:center;padding:30px;font-family:var(--sans);font-size:.8rem;color:var(--fg2);background:radial-gradient(circle at 30% 15%,rgba(198,164,90,.2),transparent 60%),var(--bg2)}
+.phone{width:190px;max-width:100%;border:1px solid rgba(198,164,90,.55);background:var(--bg);padding:12px;border-radius:26px;box-shadow:0 30px 60px -30px #000,inset 0 0 0 4px var(--bg2)}
+.ph-top{display:flex;gap:9px;align-items:center;margin:6px 4px 10px}
+.ph-av{width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;font:500 .8rem var(--serif);color:var(--gold-hi);font-style:normal;flex:none}
+.ph-top b{display:block;color:var(--fg);font-size:.78rem;font-weight:600}
+.ph-top small{color:var(--muted);font-size:.66rem}
+.ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.ph-grid i{aspect-ratio:1;display:grid;place-items:center;font:600 .54rem var(--sans);letter-spacing:.12em;text-transform:uppercase;color:rgba(245,242,235,.72);font-style:normal;background:linear-gradient(135deg,rgba(198,164,90,var(--a,.2)),var(--card))}
+.cal{width:min(100%,250px);border:1px solid var(--line);background:var(--bg);padding:14px}
+.cal-h{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-top:12px}
+.cal-g b{font-size:.58rem;color:var(--muted);text-align:center;font-weight:600;letter-spacing:.1em}
+.cal-g i{aspect-ratio:1;border:1px solid var(--line);font-style:normal;display:grid;place-items:center;font-size:.5rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.cal-g i.p{border-color:rgba(198,164,90,.65);color:var(--gold-hi);background:rgba(198,164,90,.1)}
+.cal-g i.s{border-color:rgba(226,201,130,.35);color:var(--fg2);background:rgba(245,242,235,.04)}
+.cal-g i.r{border-color:var(--gold-hi);color:#17130a;background:var(--gold)}
+.cal-key{display:flex;gap:12px;margin-top:12px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* footer */
+footer{padding-block:64px 120px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+footer .logo{color:var(--fg)}
+footer a:hover{color:var(--gold-hi)}
+.foot-grid{display:grid;gap:36px;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+@media(min-width:900px){.foot-grid{grid-template-columns:1.5fr .8fr 1.2fr 1.2fr}}
+footer h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+.foot-grid p{margin-top:12px;max-width:42ch}
+.foot-links{display:grid;gap:10px}
+.foot-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.cp-t{color:var(--fg2);user-select:all;overflow-wrap:anywhere}
+.cp-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.foot-bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:44px;padding-top:22px;font-size:.8rem}
+
+/* assistant: shared chat */
+.chat{display:flex;flex-direction:column;min-height:0;background:linear-gradient(180deg,#1c1c21,var(--bg2));border:1px solid var(--line);box-shadow:0 40px 90px -50px rgba(0,0,0,.9),inset 0 0 0 1px rgba(198,164,90,.07)}
+.chat-h{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.chat-h .av{width:38px;height:38px;font-size:1.1rem}
+.chat-h b{font-family:var(--serif);font-size:1.3rem;font-weight:500;line-height:1.1;display:block}
+.chat-h small{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:.72rem;margin-top:3px}
+.chat-h small::before{content:"";width:6px;height:6px;border-radius:50%;background:#7fbf8e;flex:none}
+.chat-h .icon-btn{margin-left:auto}
+.av{width:30px;height:30px;border:1px solid var(--gold);display:grid;place-items:center;font:500 .95rem var(--serif);color:var(--gold-hi);background:var(--bg);font-style:normal;flex:none}
+.chat-log{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:16px;min-height:0;scroll-behavior:smooth}
+.m{display:flex;gap:10px;max-width:94%;min-width:0}
+.m.u{align-self:flex-end}
+.m .col{min-width:0}
+.bub{padding:12px 15px;font-size:.92rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--line);background:var(--card);color:var(--fg)}
+.m.u .bub{background:rgba(198,164,90,.14);border-color:rgba(198,164,90,.45)}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.acts .chip{font-family:inherit}
+.chat-sugg{display:flex;flex-wrap:wrap;gap:8px;padding-left:40px}
+.dots i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin-right:5px;animation:bl 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.chat-f{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line)}
+.chat-f input{flex:1;min-width:0;background:var(--bg);border:1px solid var(--line);padding:12px 14px;border-radius:2px;outline:none}
+.chat-f input:focus{border-color:var(--gold)}
+.chat-note{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 14px 12px;font-size:.7rem;color:var(--muted)}
+.chat-note button{background:none;border:0;color:var(--muted);text-decoration:underline;padding:0;font-size:.7rem}
+.chat-note button:hover{color:var(--gold-hi)}
+.chat.main{height:clamp(540px,72vh,660px)}
+
+/* ask section */
+.ask-grid{display:grid;gap:44px;align-items:start}
+.ask-grid>*{min-width:0}
+.topic .chip,.chat .chip{max-width:100%;white-space:normal;text-align:left;line-height:1.4}
+@media(min-width:960px){.ask-grid{grid-template-columns:.92fr 1.08fr;gap:64px}.chat.main{position:sticky;top:96px}}
+.topics{display:grid;gap:24px;margin-top:34px}
+.topic h4{font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+.ask-team{margin-top:30px;display:grid;gap:12px}
+.ask-team p{color:var(--fg2);font-size:.9rem}
+
+/* floating assistant */
+#aiFab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:48;display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--gold);color:var(--gold-hi);padding:12px 18px;border-radius:99px;font-weight:600;font-size:.85rem;letter-spacing:.04em;box-shadow:0 14px 40px -12px rgba(0,0,0,.7),0 0 0 4px rgba(198,164,90,.08);transition:transform .35s var(--ease),bottom .4s var(--ease)}
+#aiFab:hover{transform:translateY(-2px)}
+#aiFab[hidden]{display:none}
+body.dockon #aiFab{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+#aiTease{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:47;max-width:250px;background:var(--card);border:1px solid var(--gold);padding:12px 38px 12px 14px;font-size:.84rem;color:var(--fg2);box-shadow:0 20px 50px -20px #000;animation:pop .4s var(--ease)}
+#aiTease b{color:var(--fg);font-weight:600}
+#aiTease button.x{position:absolute;top:6px;right:6px;background:none;border:0;color:var(--muted);font-size:1.1rem;line-height:1;padding:4px 8px}
+body.dockon #aiTease{bottom:calc(144px + env(safe-area-inset-bottom,0px))}
+#aiPanel{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;width:min(410px,calc(100vw - 32px));height:min(620px,calc(100% - 100px));display:none;animation:pop .3s var(--ease)}
+#aiPanel.open{display:flex}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-delay:0s!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+  .motion .pre{opacity:1;transform:none}
+  .marq-in{animation:none!important}
+  .marq{overflow-x:auto}
+}
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<div id="intro" role="presentation" aria-label="Nexus Prime">
+  <div class="wm" id="wm" aria-label="NEXUS PRIME"></div>
+  <button id="introSkip" type="button">Skip intro</button>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="Nexus Prime, home"><span class="np">NP</span><span class="full">NEXUS PRIME</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#services">Services</a><a href="#packages">Packages</a><a href="#addons">Add-ons</a><a href="#markets">Markets</a><a href="#portfolio">Portfolio</a><a href="#faq">FAQ</a><a href="#ask">Ask</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-r">
+      <button class="icon-btn" id="cmdBtn" type="button" aria-label="Search the site (Ctrl or Cmd K)" title="Search (Ctrl/Cmd+K)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <a class="btn sm solid nav-cta" href="#contact">Book a Consultation</a>
+      <button class="icon-btn burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 8h16M4 16h16"/></svg></button>
+    </div>
+  </div>
+  <div id="prog" aria-hidden="true"></div>
+</header>
+
+<div id="mmenu" aria-hidden="true">
+  <button class="icon-btn" id="mmenuClose" type="button" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <a href="#services">Services</a><a href="#packages">Packages</a><a href="#addons">Add-ons</a><a href="#markets">Markets</a><a href="#portfolio">Portfolio</a><a href="#faq">FAQ</a><a href="#ask">Ask</a><a href="#contact">Contact</a>
+</div>
+
+<div id="cmd" role="dialog" aria-modal="true" aria-label="Quick navigation">
+  <div class="cmd-box">
+    <input id="cmdIn" type="text" placeholder="Jump to… services, packages, markets, FAQ" autocomplete="off" aria-label="Search sections">
+    <ul class="cmd-list" id="cmdList" role="listbox"></ul>
+  </div>
+</div>
+
+<main id="main">
+<div id="top"></div>
+<section class="hero">
+  <div class="glow" id="glow" aria-hidden="true"></div>
+  <div class="wrap hero-grid" style="position:relative">
+    <div>
+      <div class="eyebrow fade">Nexus Prime · Since 2018</div>
+      <h1><span class="ln"><span style="--i:0">Where Influence</span></span><span class="ln"><span style="--i:1">Becomes <em>Impact.</em></span></span></h1>
+      <p class="lede fade b">Nexus Prime partners with creators, brands, and businesses to strengthen digital presence through strategic social media management, influencer partnerships, and brand-focused growth initiatives.</p>
+      <div class="cta-row fade c">
+        <a class="btn solid" href="#contact">Book a Consultation <span class="ar">→</span></a>
+        <a class="btn" href="#services">Explore Our Services <span class="ar">→</span></a>
+        <button class="btn ghost" type="button" data-askopen>Ask a question</button>
+      </div>
+      <div class="hero-meta fade c"><span><b>8</b> service markets</span><span><b>3</b> packages</span><span><b>42</b> add-ons</span></div>
+      <div class="scroll-cue"><i></i>Scroll to continue</div>
+    </div>
+    <div class="np-stage" aria-hidden="true"><canvas id="nexusNet"></canvas><div class="np-mark" id="npMark"><span>NP</span></div></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+<div class="marq" aria-hidden="true"><div class="marq-in"><span>Instagram</span><span>Facebook</span><span>YouTube</span><span>Influencer partnerships</span><span>Brand strategy</span><span>Creator growth</span><span>Campaign planning</span><span>Meta advertising</span><span>Content design</span><span>Community management</span><span>Instagram</span><span>Facebook</span><span>YouTube</span><span>Influencer partnerships</span><span>Brand strategy</span><span>Creator growth</span><span>Campaign planning</span><span>Meta advertising</span><span>Content design</span><span>Community management</span></div></div>
+
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">Services</div>
+    <h2 class="pre">Build your service brief.</h2>
+    <p class="lede pre">Choose a category, then select every service you want to discuss. Your selection travels into the enquiry form and a prefilled WhatsApp message.</p>
+    <div class="tabs pre" id="catTabs" role="tablist" aria-label="Service categories"></div>
+    <p class="cat-note" id="catNote"></p>
+    <div class="svc-list" id="svcList"></div>
+  </div>
+</section>
+
+<section id="packages" style="background:var(--bg2);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))">
+  <div class="wrap">
+    <div class="eyebrow">Packages</div>
+    <h2 class="pre">Choose your growth plan.</h2>
+    <p class="lede pre">Three monthly tiers. Add-on services are quoted separately after an enquiry.</p>
+    <div class="grid g3" style="margin-top:44px;align-items:stretch" id="pkGrid"></div>
+
+    <h3 style="margin-top:64px">Compare the packages</h3>
+    <div class="tbl-wrap" tabindex="0" aria-label="Package comparison table"><table id="cmpTbl"></table></div>
+
+    <div class="fit">
+      <h3>Which package fits my needs?</h3>
+      <p class="small" style="margin-top:6px">Three quick questions. A starting point for a conversation, not a recommendation you have to follow.</p>
+      <div id="fitQs"></div>
+      <p id="fitOut" class="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section id="matcher">
+  <div class="wrap">
+    <div class="eyebrow">Find your fit</div>
+    <h2 class="pre">Which package and add-ons suit you best?</h2>
+    <p class="lede pre">Answer six short questions. You get a suggested package and add-ons, with the reason for each, based on what the packages actually include.</p>
+    <div class="diag" id="match"></div>
+  </div>
+</section>
+
+<section id="payments">
+  <div class="wrap">
+    <div class="eyebrow">Payment guidelines</div>
+    <h2 class="pre">How payment works.</h2>
+    <p class="lede pre">Plain terms, set out before any work begins.</p>
+    <div class="grid g3" style="margin-top:36px">
+      <article class="card pre"><h3>Package pricing</h3><p class="small" style="color:var(--fg2);margin-top:10px">Genesis is 650 KWD, Prestige is 800 KWD and Sovereign is 1,200 KWD, each per month. Prices are shown in Kuwaiti dinar.</p></article>
+      <article class="card pre" style="--d:.08s"><h3>Add-on services</h3><p class="small" style="color:var(--fg2);margin-top:10px">Add-ons are scoped to your needs and quoted before you commit. They are not included in the monthly package price.</p></article>
+      <article class="card pre" style="--d:.16s"><h3>Monthly engagements</h3><p class="small" style="color:var(--fg2);margin-top:10px">Packages run month to month with no long-term lock-in. If you upgrade mid-month, the change is pro-rated.</p></article>
+      <article class="card pre"><h3>Before you pay</h3><p class="small" style="color:var(--fg2);margin-top:10px">Payment methods, billing dates and invoicing details are confirmed with you in writing before work starts.</p></article>
+      <article class="card pre" style="--d:.08s"><h3>Stay safe</h3><p class="small" style="color:var(--fg2);margin-top:10px">This website never asks for card or bank details. Payment requests come only from the contact details on this page: nexusprimesmm51@gmail.com and +91 96547 08824.</p></article>
+      <article class="card pre" style="--d:.16s"><h3>Questions</h3><p class="small" style="color:var(--fg2);margin-top:10px">Ask about pricing or billing during your consultation, or message us on WhatsApp.</p><div class="cta-row" style="margin-top:16px"><a class="btn sm" href="#contact">Ask a question <span class="ar">→</span></a></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="addons">
+  <div class="wrap">
+    <div class="eyebrow">Add-ons</div>
+    <h2 class="pre">42 services, built around you.</h2>
+    <p class="lede pre">Search, filter and select the services you want. Add-on pricing is scoped per enquiry, so every service shows a quote request instead of a price.</p>
+    <div class="tools">
+      <input class="search" id="aoSearch" type="search" placeholder="Search add-ons by name" aria-label="Search add-ons">
+      <span class="small" id="aoCount"></span>
+    </div>
+    <div class="tabs" id="aoCats" style="margin-top:16px"></div>
+    <div class="addon-grid" id="aoGrid"></div>
+    <div class="empty" id="aoEmpty" hidden>No add-ons match that search. Try a shorter term or clear the filter.</div>
+    <div class="cta-row"><button class="btn solid" id="planBtn" type="button">Create My Custom Service Plan <span class="ar">→</span></button></div>
+  </div>
+</section>
+
+<section id="details" style="background:var(--bg2);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))">
+  <div class="wrap">
+    <div class="eyebrow">Our standard</div>
+    <h2 class="pre">Thoughtful Details. A Higher Standard.</h2>
+    <div class="grid g4" style="margin-top:44px">
+      <article class="card tcard tilt pre"><span class="gl">I</span><div><h3>Strategic Clarity</h3><p>Information is structured so visitors can quickly identify the services relevant to them.</p></div></article>
+      <article class="card tcard tilt pre" style="--d:.08s"><span class="gl">II</span><div><h3>Signature Identity</h3><p>Typography, visual language, brand details and interaction patterns stay consistent throughout.</p></div></article>
+      <article class="card tcard tilt pre" style="--d:.16s"><span class="gl">III</span><div><h3>Conversion-Focused Experience</h3><p>Packages, services and enquiry pathways are clear and easy to move between.</p></div></article>
+      <article class="card tcard tilt pre" style="--d:.24s"><span class="gl">IV</span><div><h3>Responsive by Design</h3><p>The experience adapts thoughtfully to desktop, tablet and mobile.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="markets">
+  <div class="wrap">
+    <div class="eyebrow">International</div>
+    <h2 class="pre">Serving clients across eight markets.</h2>
+    <p class="lede pre">Nexus Prime serves clients in the markets below. These are service markets, not office locations.</p>
+    <div class="globe-grid">
+      <div class="globe-box"><canvas id="globe" width="560" height="560" role="img" aria-label="Interactive globe showing the eight Nexus Prime service markets. Drag to rotate. A text list of the same markets follows."></canvas></div>
+      <div>
+        <div class="mk-list" id="mkList"></div>
+        <div class="mk-info" id="mkInfo" aria-live="polite"></div>
+        <p class="small" style="margin-top:12px">The globe is stylised. Marker positions follow each country's approximate centre, with Dubai placed on the city.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="diagnostic" style="background:var(--bg2);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))">
+  <div class="wrap">
+    <div class="eyebrow">Planning tool</div>
+    <h2 class="pre">Discover Your Digital Growth Priorities.</h2>
+    <p class="lede pre">Six short questions produce a planning summary for a consultation. It is not an audit and does not predict results. No account needed.</p>
+    <div class="diag" id="diag"></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="eyebrow">Portfolio</div>
+    <h2 class="pre">Selected work.</h2>
+    <p class="lede pre">Client case studies are published here once they are approved for display. Until then, the layout below shows how a project is presented.</p>
+    <div class="concept pre" style="margin-top:36px">
+      <div class="vis mock" role="img" aria-label="Illustrative sample of a social profile grid and a monthly content calendar"><div class="phone"><div class="ph-top"><i class="ph-av">NP</i><div><b>yourbrand</b><small>Sample profile</small></div></div><div class="ph-grid"><i style="--a:0.34">Intro</i><i style="--a:0.18">Tips</i><i style="--a:0.42">Offer</i><i style="--a:0.26">Reel</i><i style="--a:0.14">Quote</i><i style="--a:0.3">Recap</i><i style="--a:0.22">Story</i><i style="--a:0.38">Poll</i><i style="--a:0.2">Launch</i></div></div><div class="cal"><div class="cal-h">Monthly content calendar</div><div class="cal-g"><b>M</b><b>T</b><b>W</b><b>T</b><b>F</b><b>S</b><b>S</b><i class="p">Post</i><i class=""></i><i class="s">Story</i><i class="r">Reel</i><i class="p">Post</i><i class=""></i><i class="s">Story</i><i class="s">Story</i><i class="p">Post</i><i class=""></i><i class="p">Post</i><i class="r">Reel</i><i class=""></i><i class="s">Story</i><i class="p">Post</i><i class="s">Story</i><i class=""></i><i class="p">Post</i><i class="r">Reel</i><i class=""></i><i class="p">Post</i></div><div class="cal-key"><span>Post</span><span>Story</span><span>Reel</span></div></div></div>
+      <div class="txt">
+        <span class="label">Sample layout · not a client project</span>
+        <h3>How a case study is presented</h3>
+        <p class="small" style="margin-top:8px;color:var(--fg2)">Each approved project is shown with the fields below. Nothing on this card describes a real engagement.</p>
+        <dl><dt>Client</dt><dd>Named only if authorised</dd><dt>Objective</dt><dd>What the project set out to do</dd><dt>Challenge</dt><dd>Where the brand started</dd><dt>Approach</dt><dd>The strategy applied</dd><dt>Services</dt><dd>What was delivered</dd><dt>Results</dt><dd>Only verified figures</dd></dl>
+        <div class="cta-row" style="margin-top:22px"><a class="btn sm" href="#contact">Ask to see relevant work <span class="ar">→</span></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trust" style="background:var(--bg2);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))">
+  <div class="wrap">
+    <div class="eyebrow">Proof</div>
+    <h2 class="pre">Trusted by ambitious brands.</h2>
+    <div class="stats pre" style="margin-top:34px"><div class="stat"><b>50+</b><span>Brands served</span></div><div class="stat"><b>3</b><span>Platforms: Instagram, Facebook, YouTube</span></div><div class="stat"><b>24h</b><span>Response time</span></div></div>
+    <div class="grid g3" id="testi"></div>
+    <p class="small" style="margin-top:18px">Testimonials and figures carried over from the existing Nexus Prime website.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="eyebrow">The process</div>
+    <h2 class="pre">How we build with you.</h2>
+    <div class="tl" id="tl"><div class="prog" id="tlProg"></div>
+      <div class="step"><h3>Discovery Call</h3><p>We understand your brand, goals, and target audience.</p></div>
+      <div class="step"><h3>Strategy Building</h3><p>We craft a custom social media strategy tailored to your objectives.</p></div>
+      <div class="step"><h3>Content Creation &amp; Execution</h3><p>Our team creates, schedules, and publishes content.</p></div>
+      <div class="step"><h3>Growth &amp; Reporting</h3><p>We analyse performance, refine strategy, and plan next steps.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--bg2);margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="pre">Answers, no fluff.</h2>
+    <div class="tabs" id="faqCats"></div>
+    <div class="faq" id="faqList"></div>
+  </div>
+</section>
+
+<section id="ask">
+  <div class="wrap ask-grid">
+    <div>
+      <div class="eyebrow">Ask Nexus</div>
+      <h2 class="pre">Questions before you commit? Ask.</h2>
+      <p class="lede pre">Our assistant answers from what Nexus Prime has published: services, packages, add-ons, markets and how we work. Anything it cannot confirm goes to the team.</p>
+      <div class="topics" id="askTopics"></div>
+      <div class="card ask-team">
+        <h3>Prefer to talk to a person?</h3>
+        <p>Message the team directly. We reply within 24 hours.</p>
+        <div class="cp-row"><a class="btn sm solid" href="https://wa.me/919654708824" target="_blank" rel="noopener">WhatsApp the team</a><button class="btn sm" type="button" data-copy="nexusprimesmm51@gmail.com">Copy email</button></div>
+        <p class="small">nexusprimesmm51@gmail.com · +91 96547 08824</p>
+      </div>
+    </div>
+    <div class="chat main" id="askChat" role="region" aria-label="Ask Nexus assistant">
+      <div class="chat-h"><i class="av" aria-hidden="true">N</i><div><b>Nexus assistant</b><small class="chat-sub">Answers from this website's information</small></div></div>
+      <div class="chat-log" id="askLog" aria-live="polite" aria-relevant="additions"></div>
+      <form class="chat-f" id="askForm"><input id="askIn" type="text" placeholder="Ask about packages, services, markets, payment…" aria-label="Your question" autocomplete="off" maxlength="500"><button class="btn sm solid chat-send" type="submit">Send</button><button class="btn sm ghost chat-stop" type="button" hidden>Stop</button></form>
+      <div class="chat-note"><span>Prices and scope are confirmed in writing before work starts.</span><button type="button" class="chat-clear">Clear chat</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="cta">
+  <div class="wrap" style="padding-block:clamp(20px,5vw,50px)">
+    <h2 class="pre">Make the Next Conversation Count.</h2>
+    <p class="lede pre">Tell us what you're building, where you want to go, and how you'd like your digital presence to evolve. Let's explore the right next step.</p>
+    <div class="cta-row pre"><a class="btn solid" href="#contact">Start a Conversation <span class="ar">→</span></a><a class="btn" href="#contact">Book a Consultation <span class="ar">→</span></a><button class="btn ghost" type="button" data-askopen>Ask a question</button><a class="btn ghost" href="https://wa.me/919654708824" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2 class="pre">Start your enquiry.</h2>
+    <p class="lede pre">Review your selection, create a brief, then send it by email or WhatsApp.</p>
+    <div class="contact-line"><span><b>Email</b> nexusprimesmm51@gmail.com</span><span><b>WhatsApp</b> +91 96547 08824</span></div>
+    <div class="enq" style="margin-top:36px">
+      <form class="card" id="form" novalidate>
+        <div class="field"><label for="fName">Name</label><input id="fName" autocomplete="name" required><span class="err" id="eName"></span></div>
+        <div class="field"><label for="fBiz">Business or creator name</label><input id="fBiz" autocomplete="organization"></div>
+        <div class="field"><label for="fContact">Email or preferred contact method</label><input id="fContact" required><span class="err" id="eContact"></span></div>
+        <div class="field"><label for="fMarket">Target market (optional)</label><select id="fMarket"><option value="">Not specified</option></select></div>
+        <div class="field"><label for="fObj">Primary objective</label><select id="fObj"><option value="">Not specified</option><option>Grow my audience</option><option>Generate leads</option><option>Build my brand identity</option><option>Land sponsorships and collaborations</option><option>Launch something new</option></select></div>
+        <div class="field"><label for="fBrief">Project brief (optional)</label><textarea id="fBrief" placeholder="Tell us what you're building and where you want to go."></textarea></div>
+        <div class="cta-row" style="margin-top:6px">
+          <button class="btn" type="button" id="bReview">Review My Selection</button>
+          <button class="btn" type="button" id="bBrief">Create My Service Brief</button>
+          <button class="btn solid" type="submit" id="bSend">Send Enquiry <span class="ar">→</span></button>
+          <a class="btn ghost" id="bWa" href="https://wa.me/919654708824" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+        <p class="status" id="status" aria-live="polite"></p>
+      </form>
+      <div class="card sel-sum" id="summary" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-grid">
+    <div>
+      <a class="logo" href="#top"><span class="np">NP</span><span>NEXUS PRIME</span></a>
+      <p>Social media management, influencer management and digital brand strategy. Established 2018.</p>
+      <div class="foot-cta"><a class="btn sm solid" href="#contact">Book a Consultation</a><button class="btn sm" type="button" data-askopen>Ask a question</button></div>
+    </div>
+    <div><h4>Explore</h4><div class="foot-links"><a href="#services">Services</a><a href="#packages">Packages</a><a href="#addons">Add-ons</a><a href="#markets">Markets</a><a href="#faq">FAQ</a><a href="#ask">Ask Nexus</a><a href="#contact">Contact</a></div></div>
+    <div><h4>Contact</h4><div class="foot-links"><span class="cp-t">nexusprimesmm51@gmail.com</span><span class="cp-t">+91 96547 08824 (WhatsApp)</span><div class="cp-row"><button class="btn sm ghost" type="button" data-copy="nexusprimesmm51@gmail.com">Copy email</button><a class="btn sm ghost" href="https://wa.me/919654708824" target="_blank" rel="noopener">WhatsApp</a></div><span>Replies within 24 hours</span></div></div>
+    <div><h4>Markets</h4><p style="margin-top:0">Kuwait · Jordan · Dubai, UAE · Canada · Georgia · United States · India · South Korea</p><p>Service markets, not office locations.</p></div>
+  </div>
+  <div class="foot-bar"><span>© 2026 Nexus Prime. All rights reserved.</span><span>This website never asks for card or bank details.</span></div>
+</footer>
+
+<div id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgTitle"><div class="dlg-box"><button class="icon-btn dlg-x" id="dlgClose" type="button" aria-label="Close details"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div id="dlgBody"></div></div></div>
+<button id="aiFab" type="button" aria-haspopup="dialog" aria-controls="aiPanel" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.5 7.2L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>Ask Nexus</button>
+<div id="aiTease" hidden><b>Questions?</b> Ask about packages, add-ons or markets.<button class="x" type="button" id="aiTeaseX" aria-label="Dismiss">×</button></div>
+<div id="aiPanel" class="chat" role="dialog" aria-label="Nexus Prime assistant">
+  <div class="chat-h"><i class="av" aria-hidden="true">N</i><div><b>Nexus assistant</b><small class="chat-sub">Answers from this website's information</small></div><button class="icon-btn" id="aiClose" type="button" aria-label="Close assistant"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="chat-log" id="aiLog" aria-live="polite" aria-relevant="additions"></div>
+  <form class="chat-f" id="aiForm"><input id="aiIn" type="text" placeholder="Ask about packages, services, markets…" aria-label="Your question" autocomplete="off" maxlength="500"><button class="btn sm solid chat-send" type="submit">Send</button><button class="btn sm ghost chat-stop" type="button" hidden>Stop</button></form>
+  <div class="chat-note"><span>Prices and scope are confirmed in writing.</span><button type="button" class="chat-clear">Clear chat</button></div>
+</div>
+
+<div id="dock" role="region" aria-label="Your selection"><div class="t" id="dockT"></div><a class="btn sm solid" href="#contact" id="dockGo">Continue to Enquiry <span class="ar">→</span></a></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function store(k,v){try{if(v===undefined)return sessionStorage.getItem(k);sessionStorage.setItem(k,v)}catch(e){return null}}
+
+/* favicon */
+try{var ic=document.createElement('link');ic.rel='icon';ic.href='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#0B0B0D"/><rect x="3" y="3" width="58" height="58" fill="none" stroke="#C6A45A" stroke-width="2"/><text x="32" y="43" font-family="Georgia,serif" font-size="30" text-anchor="middle" fill="#E2C982">NP</text></svg>');document.head.appendChild(ic)}catch(e){}
+
+/* ---------- data ---------- */
+var CATS=[
+ {n:'Social Media Management',note:'Day-to-day management of your accounts, from planning to publishing and community.',items:[['Account management','Management of your accounts on Instagram, Facebook or YouTube.'],['Content calendar planning','A planned posting schedule built around your goals.'],['Caption writing','Captions written in your brand voice.'],['Hashtag research','Hashtag and keyword research for your niche.'],['Post scheduling','Posts scheduled and published on your calendar.'],['Community management','Replies and engagement support for your audience.']]},
+ {n:'Influencer Management',note:'Finding, approaching and coordinating creator partnerships.',items:[['Influencer collaboration outreach','Outreach to creators who may suit a collaboration.'],['Sponsorship opportunity research','Research into brands that may fit your audience.'],['Influencer campaign reporting','Reporting on influencer campaign activity.']]},
+ {n:'Digital Brand Strategy',note:'Positioning, audits and market insight that guide your content.',items:[['Brand positioning consultation','Define how your brand should be seen.'],['Personal brand development','Build a clear identity around you as a creator or founder.'],['Monthly brand audit','A regular review of how your brand shows up.'],['Market and trend analysis','Context on your market and the trends in it.']]},
+ {n:'Creator Growth',note:'Structured support for creators building an audience and income.',items:[['Profile growth strategy','A plan for growing your profile.'],['Growth roadmap planning','A staged plan for the months ahead.'],['Influencer growth blueprint','A path from creator to authority.'],['Sponsorship outreach','Outreach aimed at paid partnerships.']]},
+ {n:'Creative Services',note:'Design and editing for posts, video and brand identity.',items:[['Static post design','Designed posts that match your brand.'],['Story designs','Story frames for daily visibility.'],['Reels and Shorts editing','Short-form video editing.'],['Carousel design','Swipe-through posts.'],['Thumbnail design','YouTube thumbnails.'],['Logo and brand identity kit','A mark and visual rules for your brand.']]},
+ {n:'Campaign Planning',note:'Planning and running campaigns with a clear start and finish.',items:[['Campaign planning and execution','From concept through rollout.'],['Contest and giveaway management','Giveaways run without the spam.'],['Launch campaign planning','Plan the lead-up and rollout of a launch.']]},
+ {n:'Advertising and Performance Support',note:'Paid campaigns and local search visibility.',items:[['Meta Ads management','Campaigns on Instagram and Facebook.'],['Lead generation campaign','Campaigns aimed at qualified enquiries.'],['Website traffic campaign','Send visitors to your site.'],['WhatsApp marketing setup','Set up WhatsApp for customer conversations.'],['Google Business Profile optimization','Improve how you appear in local search.']]}
+];
+var PK=[
+ {id:'Genesis',cls:'genesis',price:'650',tag:'Build Your Foundation. Establish Your Authority.',hrs:'10–12 Hours / Month',inc:['Social media account management on 1 platform','Content calendar planning','8 static posts per month','Caption writing','Hashtag research','Post scheduling','Basic graphic designing','Comment monitoring','Monthly performance report'],best:['New creators','Local businesses','Tutors & coaches','Small shops','Startups with limited budget'],why:['Maintains a professional online presence','Saves time for business owners','Ensures consistent posting for visibility','Improves profile optimization & branding'],det:['1 revision per design','WhatsApp support','15-minute monthly strategy discussion']},
+ {id:'Prestige',cls:'prestige',badge:'Most Popular',price:'800',tag:'Expand Your Reach. Amplify Your Influence.',hrs:'25–30 Hours / Month',inc:['Everything in Genesis','Management of up to 2 platforms','16 professional posts per month','12 story designs per month','Competitor analysis','Advanced hashtag strategy','Community management','Audience engagement support','Profile growth strategy','Bi-weekly performance reports','Content repurposing suggestions','Lead generation guidance','Brand positioning consultation'],best:['Growing influencers','Personal brands','Salons & clinics','Restaurants & cafés','Small to medium businesses'],why:['Faster audience growth','Improved engagement rates','Stronger brand image','Better customer interaction','More enquiries and leads'],det:['Priority support','2 revisions per design','Two monthly strategy meetings','Growth roadmap planning']},
+ {id:'Sovereign',cls:'sovereign',badge:'Flagship',price:'1,200',tag:'Command Attention. Lead Your Market.',hrs:'45–60 Hours / Month',inc:['Everything in Genesis & Prestige','Management of up to 3 platforms','25–30 professional posts per month','Daily story management','Advanced content strategy','Personal brand development','Influencer collaboration outreach','Sponsorship opportunity research','Reputation management','Monthly brand audit','Market & trend analysis','Detailed analytics dashboard','Campaign planning & execution','Advanced lead generation strategy','Competitor benchmarking','Priority community management','Monthly growth consultation'],best:['Established influencers','Luxury brands','E-commerce businesses','Coaches & trainers','Agencies','High-growth startups','Brands seeking aggressive growth'],why:['Premium brand positioning','Higher reach and engagement','Better lead generation','Improved client acquisition','Increased collaboration & sponsorship potential','Complete social media management under one roof'],det:['Dedicated account manager','Weekly strategy meetings','Priority client support','Unlimited reasonable revisions','Custom monthly growth plan','Detailed monthly performance presentation']}
+];
+PK[0].groups=[['Account management',['Social media account management on 1 platform','Comment monitoring']],['Content',['Content calendar planning','8 static posts per month','Caption writing','Hashtag research','Post scheduling','Basic graphic designing']],['Reporting',['Monthly performance report']]];
+PK[1].groups=[['Account management',['Everything in Genesis','Management of up to 2 platforms','Community management','Audience engagement support']],['Content',['16 professional posts per month','12 story designs per month','Advanced hashtag strategy','Content repurposing suggestions']],['Strategy and growth',['Competitor analysis','Profile growth strategy','Lead generation guidance','Brand positioning consultation']],['Reporting',['Bi-weekly performance reports']]];
+PK[2].groups=[['Account management',['Everything in Genesis & Prestige','Management of up to 3 platforms','Daily story management','Priority community management']],['Content',['25–30 professional posts per month']],['Strategy and growth',['Advanced content strategy','Personal brand development','Reputation management','Monthly brand audit','Market & trend analysis','Competitor benchmarking','Advanced lead generation strategy','Monthly growth consultation']],['Influencer and campaigns',['Influencer collaboration outreach','Sponsorship opportunity research','Campaign planning & execution']],['Reporting',['Detailed analytics dashboard']]];
+PK[0].rep='Monthly performance report';PK[1].rep='Bi-weekly performance reports';PK[2].rep='Detailed monthly performance presentation and an analytics dashboard';
+var CMP=[['Monthly effort','10–12 hrs','25–30 hrs','45–60 hrs'],['Platforms','1','Up to 2','Up to 3'],['Posts per month','8 static','16 professional','25–30 professional'],['Stories','—','12 designs','Daily management'],['Reporting','Monthly report','Bi-weekly reports','Monthly presentation + dashboard'],['Strategy meetings','15-min monthly discussion','Two monthly','Weekly'],['Revisions per design','1','2','Unlimited reasonable'],['Support','WhatsApp','Priority','Dedicated account manager']];
+var AO=[
+['A','Additional Platform Management','Extend management to another platform beyond your package.'],['A','Profile Optimization','First impressions decide who follows.'],['A','Content Calendar Development','Plan posting strategically instead of reactively.'],['A','Caption Writing','Words that earn the save, share, and DM.'],['A','Hashtag and Keyword Research','Reach the right audiences, not just bigger ones.'],['A','Content Scheduling and Publishing Support','Consistent publishing on your calendar.'],
+['B','Professional Static Post Design','Designed single-image posts that match your brand.'],['B','Carousel Design','Swipe-through posts built for dwell time.'],['B','Story Design','Story frames that keep you visible daily.'],['B','Reels and Short-Form Video Editing','Edits paced for short-form platforms.'],['B','YouTube Shorts Editing','YouTube-native pacing for Shorts.'],['B','YouTube Thumbnail Design','Thumbnails designed to earn the click.'],['B','Content Repurposing','Turn existing content into formats for other platforms.'],['B','Custom Story Highlight Covers','Matching covers for your profile highlights.'],['B','Creative Campaign Assets','Visual assets built around a specific campaign.'],
+['C','Logo Design','A mark that earns recognition in a crowded feed.'],['C','Brand Identity Kit','Colours, type and visual rules in one kit.'],['C','Brand Guidelines Document','A reference document for consistent use of your brand.'],['C','Personal Brand Positioning','Define how you want to be known.'],['C','Professional Biography and About-Section Writing','Clear bios for profiles and websites.'],['C','Media Kit Design','One document to present your audience and offer to brands.'],['C','Brand Profile Audit','A review of how your profiles present your brand.'],
+['D','Sponsorship Prospect Research','Identify brands that may suit your audience.'],['D','Brand Outreach Campaign','Structured outreach to prospective brand partners.'],['D','Influencer Collaboration Research','Find creators that fit a collaboration.'],['D','Creator Growth Blueprint','A planned path from creator to authority.'],['D','Sponsorship Pitch Writing','Pitches written for the brands you target.'],['D','Partnership Pipeline Management','Track and follow up partnership conversations.'],['D','Campaign Coordination Support','Day-to-day coordination of campaign participants.'],['D','Influencer Rate Card Development','A structured rate card for your collaborations.'],
+['E','Competitor Analysis Report','See where you can differentiate from competitors.'],['E','Audience Research Report','Who your audience is and what they respond to.'],['E','Content Performance Audit','Review what has worked and what has not.'],['E','Monthly Analytics Report','A monthly view of what is working.'],['E','Content Strategy Workshop','A working session to set direction for your content.'],['E','Social Media Growth Roadmap','A staged plan for your next period of growth.'],
+['F','Meta Advertising Campaign Setup','Set up campaigns on Instagram and Facebook.'],['F','Meta Advertising Management','Ongoing management of your Meta campaigns.'],['F','Lead-Generation Campaign Support','Campaigns aimed at qualified enquiries.'],['F','Google Business Profile Optimization','Improve how you appear in local search.'],['F','Influencer Campaign Reporting','Reporting on influencer campaign activity.'],['F','Launch Campaign Planning','Plan the lead-up and rollout of a launch.']];
+var AOC={A:'Social Media and Account Management',B:'Creative Design and Content Production',C:'Branding and Personal Identity',D:'Influencer and Creator Support',E:'Strategy, Analytics, and Research',F:'Advertising and Campaign Support'};
+var AOW=['Managing another social platform beyond the number covered by your package.','Reviewing and refining profile elements such as name, bio, picture, links and highlights so the profile reads clearly to new visitors.','Planning what is posted, on which platform and when, over a set period.','Writing post captions in your brand voice, including calls to action where relevant.','Finding the hashtags and keywords your audience uses so your posts can be found.','Queuing approved posts and publishing them on the agreed dates.','Designing single-image posts that follow your brand\'s look.','Designing multi-slide swipe posts that present a topic across several frames.','Designing vertical story frames for announcements, promotions and updates.','Editing supplied footage into short vertical videos with cuts, text and audio.','Editing vertical videos formatted for YouTube Shorts.','Designing the thumbnail image that represents a YouTube video.','Adapting existing content, such as a long video or post, into formats for other platforms.','Designing matching cover icons for your profile story highlights.','Designing the set of visuals needed for a specific campaign.','Designing a logo for your brand or channel.','Defining the core visual elements of your brand, such as logo use, colours and typography, as one set.','A written reference showing how your brand\'s visual and verbal elements should be used.','Defining what you stand for, who you serve and how you want to be perceived.','Writing bios and About text for profiles, websites or media materials.','Designing a document that introduces you and your audience to brands and sponsors.','A review of how your profiles currently present your brand, with observations to act on.','Identifying brands that may suit your audience and content.','Contacting selected brands with a structured message sequence.','Identifying creators who may fit a collaboration with your brand.','A written plan for developing a creator\'s audience and opportunities.','Writing the pitch you send to brands you want to work with.','Tracking partnership conversations and follow-ups in one place.','Coordinating creators, schedules and deliverables during a campaign.','Preparing a structured document that sets out what you offer to brands.','A report comparing your presence with selected competitors.','A report on who your audience is and what they engage with.','A review of how your past content has performed.','A monthly summary of account performance.','A working session to agree the direction of your content.','A staged plan for your next period of growth.','Building campaigns, audiences and ads in Meta\'s advertising tools.','Ongoing monitoring and adjustment of live Meta campaigns.','Campaign support aimed at collecting enquiries from interested people.','Refining your Google Business Profile so your business information is complete and clear in search and maps.','A report summarising the activity of an influencer campaign.','Planning the activity before, during and after a launch.'];
+var AOS={A:['Platforms and account handles','How often you want to post','Your brand voice and existing assets','Who approves content before it goes live'],B:['Formats and how many you need','Brand colours, fonts and assets','Source footage, copy or images you will supply','Revisions and turnaround'],C:['Your current brand materials','Audience and positioning','Where the deliverable will be used','File formats you need'],D:['Your niche and audience size','Target brands or creators','Your goal: paid work, products or partnerships','Existing contacts and past collaborations'],E:['Accounts and competitors to review','Time period covered','Access to your analytics','How you will use the findings'],F:['Campaign goals and budget','Platforms and accounts involved','Your offer or landing page','Reporting you expect']};
+var AOV={0:'Packages cover 1 platform (Genesis), up to 2 (Prestige) and up to 3 (Sovereign).',2:'Content calendar planning is included in every package.',3:'Caption writing is included in every package.',4:'Hashtag research is included in every package; Prestige and Sovereign add advanced hashtag strategy.',5:'Post scheduling is included in every package.',6:'Packages include 8 static posts (Genesis), 16 professional posts (Prestige) and 25–30 professional posts (Sovereign) per month.',8:'Prestige includes 12 story designs per month; Sovereign includes daily story management.',12:'Prestige and Sovereign include content repurposing suggestions.',18:'Prestige includes a brand positioning consultation; Sovereign includes personal brand development.',21:'Sovereign includes a monthly brand audit.',22:'Sovereign includes sponsorship opportunity research.',24:'Sovereign includes influencer collaboration outreach.',30:'Prestige includes competitor analysis; Sovereign includes competitor benchmarking.',33:'Every package includes performance reporting: monthly (Genesis), bi-weekly (Prestige), a monthly presentation with analytics dashboard (Sovereign).',35:'Prestige includes growth roadmap planning; Sovereign includes a custom monthly growth plan.',38:'Prestige includes lead generation guidance; Sovereign includes an advanced lead generation strategy.',41:'Sovereign includes campaign planning and execution.'};
+var MK=[
+ {n:'Kuwait',f:'🇰🇼',c:'KW',lat:29.4,lon:47.9,sub:'State of Kuwait'},
+ {n:'Jordan',f:'🇯🇴',c:'JO',lat:31.0,lon:36.5,sub:'Hashemite Kingdom of Jordan'},
+ {n:'Dubai, UAE',f:'🇦🇪',c:'AE',lat:25.2,lon:55.3,sub:'Dubai is a city in the United Arab Emirates'},
+ {n:'Canada',f:'🇨🇦',c:'CA',lat:56,lon:-106,sub:'Canada'},
+ {n:'Georgia',f:'🇬🇪',c:'GE',lat:42.3,lon:43.4,sub:'The country of Georgia'},
+ {n:'United States',f:'🇺🇸',c:'US',lat:39,lon:-98,sub:'United States of America'},
+ {n:'India',f:'🇮🇳',c:'IN',lat:21,lon:78,sub:'Republic of India'},
+ {n:'South Korea',f:'🇰🇷',c:'KR',lat:36.5,lon:127.8,sub:'Republic of Korea'}];
+var TESTI=[['Ananya Mehta','Founder, Bloom Wellness','AM','Nexus Prime didn\'t just grow our following — they grew our revenue. In 4 months our inquiries tripled and our brand finally feels premium online.'],['Rohan Kapoor','Creator, 220K+','RK','I\'ve worked with three agencies before. None came close. The strategy depth, the design quality, the reliability — it\'s a different league.'],['Priya Sharma','Owner, Saffron Café','PS','Our weekend bookings doubled. The team treats our brand like it\'s their own — and it shows in every single post.'],['Vikram Singh','CEO, NorthHaus Realty','VS','Authoritative, sharp, and refreshingly honest. They told us what would actually move the needle — and then they delivered it.'],['Maya Iyer','Personal Brand Coach','MI','My positioning went from confused to commanding. The Sovereign package is genuinely the best investment I\'ve made this year.'],['Arjun Verma','D2C Founder','AV','Lead quality jumped within the first month. Reporting is transparent, the creative is editorial-grade — everything just works.']];
+var FAQ=[
+['Services','What platforms do you manage?','We specialize in Instagram, Facebook, and YouTube — the three platforms with the strongest ROI for brands, creators, and personal brands.'],
+['Services','Do you create content or just schedule it?','We create everything — strategy, captions, graphics, story designs, and video edits. Our team executes end-to-end so you never have to brief, design, or post again.'],
+['Packages and Pricing','Can I upgrade my plan mid-month?','Absolutely. Upgrades are pro-rated and we\'ll roll new deliverables into your active calendar within 48 hours.'],
+['Packages and Pricing','How does add-on pricing work?','Add-on services are scoped and priced based on your specific brand needs — we send a clear, fixed quote within 24 hours of your inquiry. No hidden fees, ever.'],
+['Packages and Pricing','Do you require a long-term contract?','We work on rolling monthly engagements. We\'ve never needed a lock-in — our retention speaks for itself.'],
+['Working Process','How soon will we see results?','Early signals like engagement and reach typically lift within 3–4 weeks. Meaningful brand authority, lead flow, and follower growth compound from month 2 onward as strategy and content stack.'],
+['Reporting and Communication','What reporting do you provide?','Genesis includes monthly reports, Prestige adds bi-weekly reporting, and Sovereign includes a detailed monthly performance presentation with a custom analytics dashboard.'],
+['Reporting and Communication','Will I have a dedicated point of contact?','Yes. Prestige clients get a primary strategist; Sovereign clients are assigned a dedicated account manager with weekly meetings.'],
+['Onboarding','How do I get started?','Book a free consultation through the contact form below or message us on WhatsApp. We\'ll map your goals, recommend a plan, and you can go live within a week.']];
+
+/* ---------- state ---------- */
+var S={pkg:'',svc:[],market:'',obj:'',brief:''};
+function has(n){return S.svc.indexOf(n)>-1}
+function toggleSvc(n){var i=S.svc.indexOf(n);if(i>-1)S.svc.splice(i,1);else S.svc.push(n);render()}
+function setPkg(p){S.pkg=(S.pkg===p?'':p);render()}
+
+/* ---------- intro ---------- */
+var intro=$('#intro'),wm=$('#wm');
+var WORD='NEXUS PRIME',keep=[0,6];
+WORD.split('').forEach(function(ch,i){var s=document.createElement('span');s.textContent=ch;s.style.setProperty('--i',i);s.className=keep.indexOf(i)>-1?'k':'x';wm.appendChild(s)});
+var introEnded=false;
+function endIntro(){if(introEnded)return;introEnded=true;intro.classList.add('done');document.documentElement.classList.add('hero-ready');store('npIntro','1');setTimeout(function(){intro.style.display='none'},800)}
+if(RM||store('npIntro')==='1'||location.hash){intro.style.display='none';document.documentElement.classList.add('hero-ready');introEnded=true}
+else{
+  setTimeout(function(){wm.classList.add('mono')},2000);
+  setTimeout(endIntro,3300);
+  $('#introSkip').addEventListener('click',endIntro);
+  intro.addEventListener('click',endIntro);
+}
+
+/* ---------- nav ---------- */
+var nav=$('#nav');
+function onScroll(){nav.classList.toggle('solid',window.scrollY>30)}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+var secIds=['services','packages','addons','markets','portfolio','faq','ask','contact'];
+var linkEls=$$('#navLinks a');
+function activeSection(){var y=window.scrollY+120,cur='';secIds.forEach(function(id){var e=document.getElementById(id);if(e&&e.offsetTop<=y)cur=id});linkEls.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur)})}
+window.addEventListener('scroll',activeSection,{passive:true});activeSection();
+var mm=$('#mmenu'),bg=$('#burger');
+function menu(o){mm.classList.toggle('open',o);mm.setAttribute('aria-hidden',!o);bg.setAttribute('aria-expanded',o);if(o)$('#mmenuClose').focus();else bg.focus()}
+bg.addEventListener('click',function(){menu(true)});$('#mmenuClose').addEventListener('click',function(){menu(false)});
+$$('#mmenu a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open');mm.setAttribute('aria-hidden','true');bg.setAttribute('aria-expanded','false')})});
+
+/* command panel */
+var CMDS=[['Services','#services','Explore and select'],['Packages','#packages','Genesis, Prestige, Sovereign'],['Compare packages','#cmpTbl','Side-by-side table'],['Find my best package','#matcher','Six questions, with reasons'],['Payment guidelines','#payments','Pricing and billing terms'],['Add-ons','#addons','42 services'],['International markets','#markets','Globe and market list'],['Growth priorities tool','#diagnostic','Six-question planner'],['Portfolio','#portfolio','Case studies'],['FAQs','#faq','Common questions'],['Ask a question','#ask','Chat with the assistant'],['Open chat assistant','#aiFab','Floating chat'],['Contact information','#contact','Email and WhatsApp'],['Book a Consultation','#contact','Start an enquiry']];
+var cmd=$('#cmd'),cin=$('#cmdIn'),clist=$('#cmdList'),cidx=0,cfil=CMDS;
+function cRender(){clist.innerHTML=cfil.map(function(c,i){return '<li><button type="button" role="option" data-i="'+i+'" aria-selected="'+(i===cidx)+'">'+esc(c[0])+'<small>'+esc(c[2])+'</small></button></li>'}).join('')||'<li style="padding:14px;color:var(--muted)">No match</li>'}
+function cGo(i){var c=cfil[i];if(!c)return;cOpen(false);if(c[1]==='#aiFab'){openPanel(true);return}var t=$(c[1]);if(t)t.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})}
+function cOpen(o){cmd.classList.toggle('open',o);if(o){cin.value='';cfil=CMDS;cidx=0;cRender();cin.focus()}else $('#cmdBtn').focus()}
+$('#cmdBtn').addEventListener('click',function(){cOpen(true)});
+cmd.addEventListener('click',function(e){if(e.target===cmd)cOpen(false);var b=e.target.closest('button[data-i]');if(b)cGo(+b.dataset.i)});
+cin.addEventListener('input',function(){var q=cin.value.toLowerCase();cfil=CMDS.filter(function(c){return (c[0]+' '+c[2]).toLowerCase().indexOf(q)>-1});cidx=0;cRender()});
+cin.addEventListener('keydown',function(e){if(e.key==='ArrowDown'){e.preventDefault();cidx=Math.min(cidx+1,cfil.length-1);cRender()}else if(e.key==='ArrowUp'){e.preventDefault();cidx=Math.max(cidx-1,0);cRender()}else if(e.key==='Enter'){e.preventDefault();cGo(cidx)}});
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cOpen(!cmd.classList.contains('open'))}else if(e.key==='Escape'){if(cmd.classList.contains('open'))cOpen(false);else if(mm.classList.contains('open'))menu(false)}});
+
+/* ---------- hero pointer ---------- */
+if(FINE&&!RM){
+  var hero=$('.hero'),glow=$('#glow'),np=$('#npMark');
+  hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();glow.style.setProperty('--mx',(e.clientX-r.left)+'px');glow.style.setProperty('--my',(e.clientY-r.top)+'px');var r2=np.getBoundingClientRect(),dx=(e.clientX-r2.left-r2.width/2)/r2.width,dy=(e.clientY-r2.top-r2.height/2)/r2.height;np.style.transform='rotateY('+(dx*10).toFixed(2)+'deg) rotateX('+(-dy*10).toFixed(2)+'deg)'});
+  hero.addEventListener('pointerleave',function(){np.style.transform=''});
+}
+
+/* ---------- explorer ---------- */
+var curCat=0;
+function renderTabs(){$('#catTabs').innerHTML=CATS.map(function(c,i){return '<button class="chip" role="tab" type="button" data-i="'+i+'" aria-selected="'+(i===curCat)+'">'+esc(c.n)+'</button>'}).join('')}
+function renderSvc(){var c=CATS[curCat];$('#catNote').textContent=c.note;$('#svcList').innerHTML=c.items.map(function(it){var on=has(it[0]);return '<div class="svc'+(on?' sel':'')+'"><button class="svc-name" type="button" data-n="'+esc(it[0])+'" aria-pressed="'+on+'"><b>'+esc(it[0])+'</b><small>'+esc(it[1])+'</small></button><button class="pick" type="button" data-n="'+esc(it[0])+'" aria-label="'+(on?'Remove ':'Add ')+esc(it[0])+'" aria-pressed="'+on+'">'+(on?'✓':'+')+'</button></div>'}).join('')}
+$('#catTabs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;curCat=+b.dataset.i;renderTabs();renderSvc()});
+$('#svcList').addEventListener('click',function(e){var b=e.target.closest('button');if(b)toggleSvc(b.dataset.n)});
+
+/* ---------- packages ---------- */
+function renderPk(){
+  $('#pkGrid').innerHTML=PK.map(function(p){var on=S.pkg===p.id;
+    return '<article class="card pk tilt '+p.cls+(on?' chosen':'')+'">'+(p.badge?'<span class="badge">'+p.badge+'</span>':'')+'<canvas class="solid3d" data-k="'+PK.indexOf(p)+'" aria-hidden="true"></canvas><h3>'+p.id+'</h3><div class="tag">'+esc(p.tag)+'</div><div class="price">'+p.price+'<small>KWD / month</small></div><div class="hrs">'+p.hrs+'</div><ul>'+p.inc.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><details><summary>Details</summary><h4>Best for</h4><ul>'+p.best.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><h4>Why it\'s beneficial</h4><ul>'+p.why.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><h4>Package details</h4><ul>'+p.det.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul></details><div class="pk-act"><button class="btn ghost sm" type="button" data-d="'+PK.indexOf(p)+'">Full details</button><button class="btn'+(on?' solid':'')+'" type="button" data-p="'+p.id+'" aria-pressed="'+on+'">'+(on?'Selected: '+p.id:'Choose '+p.id)+'</button></div></article>'}).join('');
+  bindTilt();
+}
+$('#pkGrid').addEventListener('click',function(e){var b=e.target.closest('button[data-p]');if(b)setPkg(b.dataset.p)});
+$('#cmpTbl').innerHTML='<thead><tr><th></th><th>Genesis</th><th>Prestige</th><th>Sovereign</th></tr></thead><tbody>'+CMP.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+esc(c)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody>';
+/* fit selector */
+var FQ=[['How many platforms do you need managed?',['1 platform','Up to 2','Up to 3']],['What is your main need?',['A consistent, professional presence','Growing audience and leads','Full-scale management with campaigns and sponsorships']],['What level of support suits you?',['WhatsApp support and a monthly report','Priority support and regular meetings','A dedicated account manager and weekly meetings']]];
+var fitA=[-1,-1,-1];
+function renderFit(){
+  $('#fitQs').innerHTML=FQ.map(function(q,qi){return '<div class="q"><p>'+esc(q[0])+'</p><div class="opts">'+q[1].map(function(o,oi){return '<button class="chip" type="button" data-q="'+qi+'" data-o="'+oi+'" aria-pressed="'+(fitA[qi]===oi)+'">'+esc(o)+'</button>'}).join('')+'</div></div>'}).join('');
+  if(fitA.indexOf(-1)>-1){$('#fitOut').innerHTML='';return}
+  var c=[0,0,0];fitA.forEach(function(a){c[a]++});var best=c.indexOf(Math.max.apply(null,c));if(Math.max.apply(null,c)===1)best=1;
+  $('#fitOut').innerHTML='Based on your answers, <b>'+PK[best].id+'</b> may be a good starting point. <button class="chip" type="button" id="fitUse">Select '+PK[best].id+'</button>';
+  $('#fitUse').onclick=function(){S.pkg=PK[best].id;render();$('#pkGrid').scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})}
+}
+$('#fitQs').addEventListener('click',function(e){var b=e.target.closest('button[data-q]');if(!b)return;fitA[+b.dataset.q]=+b.dataset.o;renderFit()});
+
+/* ---------- add-ons ---------- */
+var aoCat='ALL',aoQ='';
+function renderAoCats(){var h='<button class="chip" type="button" data-c="ALL" aria-pressed="'+(aoCat==='ALL')+'">All 42</button>';Object.keys(AOC).forEach(function(k){h+='<button class="chip" type="button" data-c="'+k+'" aria-pressed="'+(aoCat===k)+'">'+k+' · '+esc(AOC[k])+'</button>'});$('#aoCats').innerHTML=h}
+function buildAo(){$('#aoGrid').innerHTML=AO.map(function(a,i){return '<article class="ao" data-i="'+i+'"><header><div><small>'+a[0]+' · '+esc(AOC[a[0]])+'</small><h4>'+esc(a[1])+'</h4></div></header><p>'+esc(a[2])+' Deliverables are confirmed during your enquiry.</p><div class="quote">Request a Quote</div><div class="row"><button class="btn sm" type="button" data-s="'+i+'">Select</button><button class="btn sm ghost" type="button" data-x="'+i+'">Details</button><a class="btn sm ghost" href="#contact" data-e="'+i+'">Enquire About This Service</a></div></article>'}).join('')}
+function filterAo(){var n=0;$$('.ao').forEach(function(el){var a=AO[+el.dataset.i],ok=(aoCat==='ALL'||a[0]===aoCat)&&a[1].toLowerCase().indexOf(aoQ)>-1;var was=el.classList.contains('hide');el.classList.toggle('hide',!ok);if(ok&&was&&!RM){el.classList.remove('fadein');void el.offsetWidth;el.classList.add('fadein')}if(ok)n++});$('#aoEmpty').hidden=n>0;$('#aoCount').textContent=n+' of 42 shown'}
+function syncAo(){$$('.ao').forEach(function(el){var on=has(AO[+el.dataset.i][1]);el.classList.toggle('sel',on);var b=el.querySelector('[data-s]');b.textContent=on?'Selected ✓':'Select';b.classList.toggle('solid',on);b.setAttribute('aria-pressed',on)})}
+$('#aoCats').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;aoCat=b.dataset.c;renderAoCats();filterAo()});
+$('#aoSearch').addEventListener('input',function(e){aoQ=e.target.value.trim().toLowerCase();filterAo()});
+$('#aoGrid').addEventListener('click',function(e){var s=e.target.closest('[data-s]');if(s){toggleSvc(AO[+s.dataset.s][1]);return}var en=e.target.closest('[data-e]');if(en){var n=AO[+en.dataset.e][1];if(!has(n))toggleSvc(n)}});
+$('#planBtn').addEventListener('click',function(){$('#bBrief').click();$('#contact').scrollIntoView({behavior:RM?'auto':'smooth'})});
+
+/* ---------- globe ---------- */
+var cv=$('#globe'),ctx=cv.getContext('2d'),DPR=Math.min(window.devicePixelRatio||1,2);
+function sizeGlobe(){var w=cv.clientWidth||560;cv.width=w*DPR;cv.height=w*DPR}
+sizeGlobe();window.addEventListener('resize',sizeGlobe);
+var rot=-60,tilt=18,targetRot=null,activeM=2,dragging=false,lastX=0,moved=0,pauseUntil=0,visible=true,hits=[];
+var D2R=Math.PI/180;
+function proj(lat,lon){var la=lat*D2R,lo=(lon-rot)*D2R,t=tilt*D2R;return {x:Math.cos(la)*Math.sin(lo),y:Math.cos(t)*Math.sin(la)-Math.sin(t)*Math.cos(la)*Math.cos(lo),z:Math.sin(t)*Math.sin(la)+Math.cos(t)*Math.cos(la)*Math.cos(lo)}}
+function drawGlobe(){
+  var W=cv.width,H=cv.height,R=W*0.34,cx=W/2,cy=H/2;ctx.clearRect(0,0,W,H);
+  /* atmosphere */
+  var g=ctx.createRadialGradient(cx,cy,R*.95,cx,cy,R*1.35);g.addColorStop(0,'rgba(198,164,90,.22)');g.addColorStop(1,'rgba(198,164,90,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,R*1.35,0,7);ctx.fill();
+  /* orbit rings (back) */
+  function ring(rx,ry,ang,front){ctx.save();ctx.translate(cx,cy);ctx.rotate(ang);ctx.beginPath();ctx.ellipse(0,0,rx,ry,0,front?Math.PI:0,front?Math.PI*2:Math.PI);ctx.strokeStyle='rgba(226,201,130,'+(front?.35:.12)+')';ctx.lineWidth=DPR;ctx.stroke();ctx.restore()}
+  ring(R*1.28,R*.34,-.35,false);ring(R*1.5,R*.42,.25,false);
+  /* sphere */
+  var sg=ctx.createRadialGradient(cx-R*.35,cy-R*.4,R*.1,cx,cy,R);sg.addColorStop(0,'#26242a');sg.addColorStop(.6,'#131317');sg.addColorStop(1,'#08080a');ctx.fillStyle=sg;ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.fill();
+  ctx.strokeStyle='rgba(198,164,90,.5)';ctx.lineWidth=DPR;ctx.stroke();
+  /* graticule */
+  ctx.lineWidth=DPR*.8;
+  function line(pts){var open=false;ctx.beginPath();pts.forEach(function(p){if(p.z>0){var X=cx+p.x*R,Y=cy-p.y*R;if(!open){ctx.moveTo(X,Y);open=true}else ctx.lineTo(X,Y)}else open=false});ctx.stroke()}
+  ctx.strokeStyle='rgba(198,164,90,.28)';
+  for(var la=-60;la<=60;la+=20){var pts=[];for(var lo=-180;lo<=180;lo+=4)pts.push(proj(la,lo+rot));line(pts)}
+  for(var lo2=-180;lo2<180;lo2+=20){var p2=[];for(var l2=-90;l2<=90;l2+=4)p2.push(proj(l2,lo2+rot));line(p2)}
+  /* rings front */
+  ring(R*1.28,R*.34,-.35,true);ring(R*1.5,R*.42,.25,true);
+  /* markers */
+  hits=[];
+  MK.forEach(function(m,i){var p=proj(m.lat,m.lon);if(p.z<=0.05)return;var X=cx+p.x*R,Y=cy-p.y*R,on=i===activeM;hits.push({i:i,x:X,y:Y});
+    if(on){var pr=(performance.now()/900)%1;ctx.beginPath();ctx.arc(X,Y,(6+pr*18)*DPR,0,7);ctx.strokeStyle='rgba(226,201,130,'+(1-pr)*.7+')';ctx.lineWidth=DPR*1.4;ctx.stroke()}
+    ctx.beginPath();ctx.arc(X,Y,(on?6:4)*DPR,0,7);ctx.fillStyle=on?'#E2C982':'#C6A45A';ctx.fill();
+    ctx.font=(on?22:17)*DPR+'px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.globalAlpha=Math.min(1,p.z*2.2);ctx.fillText(m.f,X,Y-8*DPR);
+    if(on){ctx.font='600 '+11*DPR+'px Manrope,sans-serif';ctx.fillStyle='#F5F2EB';ctx.textBaseline='top';ctx.fillText(m.c,X,Y+8*DPR)}
+    ctx.globalAlpha=1});
+}
+var last=performance.now();
+function tick(now){
+  var dt=Math.min(now-last,50);last=now;
+  if(visible){
+    if(targetRot!==null){var d=((targetRot-rot+540)%360)-180;if(Math.abs(d)<.3){rot=targetRot;targetRot=null}else rot+=d*Math.min(1,dt/180)}
+    else if(!dragging&&!RM&&now>pauseUntil)rot+=dt*0.006;
+    drawGlobe();
+  }
+  requestAnimationFrame(tick)
+}
+requestAnimationFrame(tick);
+new IntersectionObserver(function(en){visible=en[0].isIntersecting},{rootMargin:'100px'}).observe(cv);
+cv.addEventListener('pointerdown',function(e){dragging=true;moved=0;lastX=e.clientX;targetRot=null;try{cv.setPointerCapture(e.pointerId)}catch(x){}});
+cv.addEventListener('pointermove',function(e){if(!dragging)return;var dx=e.clientX-lastX;lastX=e.clientX;moved+=Math.abs(dx);rot-=dx*0.4});
+function endDrag(e){if(!dragging)return;dragging=false;pauseUntil=performance.now()+3500;if(moved<6){var r=cv.getBoundingClientRect(),x=(e.clientX-r.left)*DPR*(cv.width/(r.width*DPR)),y=(e.clientY-r.top)*DPR*(cv.height/(r.height*DPR)),best=null,bd=1e9;hits.forEach(function(h){var d=Math.hypot(h.x-x,h.y-y);if(d<bd){bd=d;best=h}});if(best&&bd<36*DPR)pickMarket(best.i)}}
+cv.addEventListener('pointerup',endDrag);cv.addEventListener('pointercancel',function(){dragging=false});
+function pickMarket(i){activeM=i;targetRot=MK[i].lon;pauseUntil=performance.now()+4000;renderMk()}
+function renderMk(){
+  $('#mkList').innerHTML=MK.map(function(m,i){return '<button class="mk" type="button" data-i="'+i+'" aria-pressed="'+(i===activeM)+'"><span class="fl" aria-hidden="true">'+m.f+'</span><span><b>'+esc(m.n)+'</b><small>'+m.c+'</small></span></button>'}).join('');
+  var m=MK[activeM];$('#mkInfo').innerHTML='<h3><span class="fl" aria-hidden="true">'+m.f+'</span>'+esc(m.n)+'</h3><p class="small" style="margin-top:6px">'+esc(m.sub)+'</p><p style="color:var(--fg2);margin-top:14px">Nexus Prime serves clients in this market. It is a service market, not an office location.</p><div class="cta-row" style="margin-top:18px"><button class="btn sm" type="button" id="mkUse">Enquire for '+esc(m.n)+' <span class="ar">→</span></button></div>';
+  $('#mkUse').onclick=function(){S.market=m.n;render();$('#contact').scrollIntoView({behavior:RM?'auto':'smooth'})}
+}
+$('#mkList').addEventListener('click',function(e){var b=e.target.closest('button');if(b)pickMarket(+b.dataset.i)});
+$('#fMarket').innerHTML+=MK.map(function(m){return '<option>'+esc(m.n)+'</option>'}).join('');
+
+/* ---------- diagnostic ---------- */
+var DQ=[
+ {k:'type',q:'What best describes you?',o:['Creator or influencer','Personal brand or coach','Local business','E-commerce or D2C brand','Agency or larger company']},
+ {k:'platform',q:'Which platform matters most right now?',o:['Instagram','Facebook','YouTube','More than one']},
+ {k:'challenge',q:'What is your main challenge?',o:['Inconsistent posting','Low engagement','Unclear brand identity','Not enough leads','Few sponsorships or collaborations']},
+ {k:'audience',q:'Who are you trying to reach?',o:['Customers in my local area','An international audience','Brands and sponsors','Followers in my niche']},
+ {k:'goal',q:'What is your primary objective?',o:['Grow my audience','Generate leads','Build my brand identity','Land sponsorships and collaborations','Launch something new']},
+ {k:'considered',q:'Which areas are you considering?',multi:true,o:CATS.map(function(c){return c.n})}
+];
+var SUG={'Inconsistent posting':['Content Calendar Development','Content Scheduling and Publishing Support'],'Low engagement':['Content Performance Audit','Caption Writing'],'Unclear brand identity':['Brand Profile Audit','Personal Brand Positioning'],'Not enough leads':['Lead-Generation Campaign Support','Meta Advertising Campaign Setup'],'Few sponsorships or collaborations':['Sponsorship Prospect Research','Media Kit Design']};
+var NEXT={'Grow my audience':'Review your current content and posting rhythm, then agree a growth plan.','Generate leads':'Map how followers become enquiries, then decide where paid support fits.','Build my brand identity':'Review how your profiles present you today and define positioning.','Land sponsorships and collaborations':'Prepare your media kit and shortlist brands to approach.','Launch something new':'Set a launch timeline and plan content and campaign assets around it.'};
+var dStep=0,dA={};
+function renderDiag(){
+  var d=$('#diag');
+  if(dStep>=DQ.length){
+    var sug=(SUG[dA.challenge]||[]).slice(),rel=sug.length?sug:[];
+    d.innerHTML='<div class="bar"><i style="width:100%"></i></div><h3>Your planning summary</h3><p class="small">Based only on your answers. Not an audit, and not a prediction of results.</p><div class="sum-grid"><div><h4>Your stated priorities</h4><ul><li>'+esc(dA.type||'')+' on '+esc(dA.platform||'')+'</li><li>Challenge: '+esc(dA.challenge||'')+'</li><li>Audience: '+esc(dA.audience||'')+'</li><li>Objective: '+esc(dA.goal||'')+'</li></ul></div><div><h4>Potentially relevant services</h4><ul>'+rel.map(function(s){return '<li>'+esc(s)+'</li>'}).join('')+((dA.considered||[]).length?'<li>Categories you are considering: '+esc(dA.considered.join(', '))+'</li>':'')+'</ul></div><div><h4>Suggested next step</h4><ul><li>'+esc(NEXT[dA.goal]||'')+'</li></ul></div><div><h4>Topics for a consultation</h4><ul><li>Which package suits your scope</li><li>Which add-ons need a quote</li><li>Your timeline and reporting expectations</li></ul></div></div><div class="dnav"><button class="btn solid" type="button" id="dUse">Send to enquiry <span class="ar">→</span></button><button class="btn ghost" type="button" id="dBack">Back</button><button class="btn ghost" type="button" id="dRestart">Restart</button></div>';
+    $('#dUse').onclick=function(){sug.forEach(function(s){if(!has(s))S.svc.push(s)});S.obj=dA.goal||'';S.brief='Growth priorities summary: '+(dA.type||'')+' on '+(dA.platform||'')+'. Challenge: '+(dA.challenge||'')+'. Audience: '+(dA.audience||'')+'. Objective: '+(dA.goal||'')+'.'+((dA.considered||[]).length?' Considering: '+dA.considered.join(', ')+'.':'');render();$('#contact').scrollIntoView({behavior:RM?'auto':'smooth'})};
+    $('#dBack').onclick=function(){dStep=DQ.length-1;renderDiag()};
+    $('#dRestart').onclick=function(){dStep=0;dA={};renderDiag()};
+    return;
+  }
+  var q=DQ[dStep],cur=dA[q.k];
+  d.innerHTML='<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="'+DQ.length+'" aria-valuenow="'+dStep+'"><i style="width:'+(dStep/DQ.length*100)+'%"></i></div><p class="small">Question '+(dStep+1)+' of '+DQ.length+'</p><h3>'+esc(q.q)+'</h3><div class="opts">'+q.o.map(function(o){var on=q.multi?(cur||[]).indexOf(o)>-1:cur===o;return '<button class="chip" type="button" data-o="'+esc(o)+'" aria-pressed="'+on+'">'+esc(o)+'</button>'}).join('')+'</div><div class="dnav">'+(dStep>0?'<button class="btn ghost sm" type="button" id="dPrev">Back</button>':'')+(q.multi?'<button class="btn solid sm" type="button" id="dNext">See my summary</button>':'')+'<button class="btn ghost sm" type="button" id="dRestart">Restart</button></div>';
+  $$('.chip',d).forEach(function(b){b.onclick=function(){var o=b.dataset.o;if(q.multi){var a=dA[q.k]||[],i=a.indexOf(o);if(i>-1)a.splice(i,1);else a.push(o);dA[q.k]=a;renderDiag()}else{dA[q.k]=o;dStep++;renderDiag()}}});
+  var p=$('#dPrev');if(p)p.onclick=function(){dStep--;renderDiag()};
+  var n=$('#dNext');if(n)n.onclick=function(){dStep++;renderDiag()};
+  $('#dRestart').onclick=function(){dStep=0;dA={};renderDiag()};
+}
+
+/* ---------- trust, faq ---------- */
+$('#testi').innerHTML=TESTI.map(function(t,i){return '<figure class="card quote-card pre" style="margin:0;--d:'+(i%3)*.08+'s"><blockquote>“'+esc(t[3])+'”</blockquote><figcaption class="who"><i>'+t[2]+'</i><span>'+esc(t[0])+'<small>'+esc(t[1])+'</small></span></figcaption></figure>'}).join('');
+var fcat='All',fcs=['All'].concat(FAQ.map(function(f){return f[0]}).filter(function(v,i,a){return a.indexOf(v)===i}));
+function renderFaq(){$('#faqCats').innerHTML=fcs.map(function(c){return '<button class="chip" type="button" data-c="'+esc(c)+'" aria-pressed="'+(c===fcat)+'">'+esc(c)+'</button>'}).join('');$('#faqList').innerHTML=FAQ.map(function(f){return '<details'+(fcat!=='All'&&f[0]!==fcat?' class="hide"':'')+'><summary>'+esc(f[1])+'<i aria-hidden="true">+</i></summary><div class="a">'+esc(f[2])+'</div></details>'}).join('')}
+$('#faqCats').addEventListener('click',function(e){var b=e.target.closest('button');if(b){fcat=b.dataset.c;renderFaq()}});
+
+/* ---------- summary / enquiry ---------- */
+function briefText(){
+  var L=['NEXUS PRIME — SERVICE BRIEF'];var n=$('#fName').value.trim(),b=$('#fBiz').value.trim(),c=$('#fContact').value.trim();
+  if(n)L.push('Name: '+n);if(b)L.push('Business / creator: '+b);if(c)L.push('Contact: '+c);
+  L.push('Package: '+(S.pkg?S.pkg+' ('+PK.filter(function(p){return p.id===S.pkg})[0].price+' KWD / month)':'Not selected'));
+  L.push('Services: '+(S.svc.length?S.svc.join('; '):'None selected')+(S.svc.length?' (add-ons quoted separately)':''));
+  if(S.market)L.push('Target market: '+S.market);if(S.obj)L.push('Primary objective: '+S.obj);
+  if(S.brief)L.push('Notes: '+S.brief);
+  return L.join('\n');
+}
+function render(){
+  $('#fMarket').value=S.market;$('#fObj').value=S.obj;if($('#fBrief').value!==S.brief)$('#fBrief').value=S.brief;
+  renderSvc();renderPk();syncAo();
+  var n=S.svc.length+(S.pkg?1:0);
+  $('#dockT').innerHTML='<b>'+n+'</b> selected'+(S.pkg?' · '+S.pkg:'')+(S.svc.length?' · '+S.svc.length+' service'+(S.svc.length>1?'s':''):'');
+  $('#dock').classList.toggle('show',n>0);document.body.classList.toggle('dockon',n>0);
+  var h='';
+  h+='<div><h4>Package</h4>'+(S.pkg?'<ul><li><span>'+S.pkg+' · '+PK.filter(function(p){return p.id===S.pkg})[0].price+' KWD / month</span><button type="button" data-rp aria-label="Remove package">×</button></li></ul>':'<p class="small">None selected. <a href="#packages" style="color:var(--gold-hi)">Choose a package</a></p>')+'</div>';
+  h+='<div><h4>Services · request a quote</h4>'+(S.svc.length?'<ul>'+S.svc.map(function(s,i){return '<li><span>'+esc(s)+'</span><button type="button" data-rs="'+i+'" aria-label="Remove '+esc(s)+'">×</button></li>'}).join('')+'</ul>':'<p class="small">None selected. <a href="#services" style="color:var(--gold-hi)">Browse services</a></p>')+'</div>';
+  h+='<div><h4>Details</h4><p class="small" style="color:var(--fg2)">Market: '+esc(S.market||'Not specified')+'<br>Objective: '+esc(S.obj||'Not specified')+'</p></div><p class="small">Package prices are monthly. Add-on services are quoted after your enquiry, so no combined total is shown.</p><div id="briefOut"></div>';
+  $('#summary').innerHTML=h;
+  $('#bWa').href='https://wa.me/919654708824?text='+encodeURIComponent(briefText());
+}
+$('#summary').addEventListener('click',function(e){if(e.target.closest('[data-rp]')){S.pkg='';render()}var r=e.target.closest('[data-rs]');if(r){S.svc.splice(+r.dataset.rs,1);render()}});
+$('#fMarket').addEventListener('change',function(e){S.market=e.target.value;render()});
+$('#fObj').addEventListener('change',function(e){S.obj=e.target.value;render()});
+$('#fBrief').addEventListener('input',function(e){S.brief=e.target.value;$('#bWa').href='https://wa.me/919654708824?text='+encodeURIComponent(briefText())});
+['fName','fBiz','fContact'].forEach(function(id){$('#'+id).addEventListener('input',function(){$('#bWa').href='https://wa.me/919654708824?text='+encodeURIComponent(briefText())})});
+function showBrief(){var t=briefText();$('#briefOut').innerHTML='<div class="brief-out" id="bo">'+esc(t)+'</div><div class="cta-row" style="margin-top:12px"><button class="btn sm" type="button" id="bCopy">Copy brief</button></div>';
+  $('#bCopy').onclick=function(){var done=function(){$('#status').textContent='Brief copied. Paste it into an email to nexusprimesmm51@gmail.com or into WhatsApp.'};try{navigator.clipboard.writeText(t).then(done,function(){selBo()})}catch(e){selBo()}};
+  function selBo(){var r=document.createRange();r.selectNodeContents($('#bo'));var s=getSelection();s.removeAllRanges();s.addRange(r);$('#status').textContent='Brief selected. Copy it with your keyboard.'}}
+$('#bReview').addEventListener('click',function(){$('#summary').scrollIntoView({behavior:RM?'auto':'smooth',block:'center'});$('#status').textContent=(S.pkg||S.svc.length)?'Review your selection on the right. Remove anything you no longer want.':'Nothing selected yet. Choose a package or services first.'});
+$('#bBrief').addEventListener('click',function(){showBrief();$('#status').textContent='Your brief is ready below your selection.'});
+$('#form').addEventListener('submit',function(e){e.preventDefault();var ok=true;
+  if(!$('#fName').value.trim()){$('#eName').textContent='Enter your name.';ok=false}else $('#eName').textContent='';
+  if(!$('#fContact').value.trim()){$('#eContact').textContent='Enter an email or other way to reach you.';ok=false}else $('#eContact').textContent='';
+  if(!ok)return;showBrief();
+  $('#status').innerHTML='This page cannot send messages itself. Your brief is ready: copy it and email it to <b>nexusprimesmm51@gmail.com</b>, or use Chat on WhatsApp.'});
+
+/* ---------- tilt ---------- */
+function bindTilt(){if(!FINE||RM)return;$$('.tilt').forEach(function(el){if(el._t)return;el._t=1;el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform='perspective(900px) rotateY('+(x*5).toFixed(2)+'deg) rotateX('+(-y*5).toFixed(2)+'deg) translateY(-3px)'});el.addEventListener('pointerleave',function(){el.style.transform=''})})}
+
+/* ---------- scroll reveal & timeline ---------- */
+function setupReveal(){
+  if(RM||!('IntersectionObserver' in window))return;
+  document.documentElement.classList.add('motion');
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('show');io.unobserve(x.target)}})},{threshold:.12});
+  $$('.pre').forEach(function(el){var r=el.getBoundingClientRect();if(r.top<innerHeight*.9){el.classList.add('show')}else io.observe(el)});
+  var rio=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');rio.unobserve(x.target)}})},{threshold:.3});
+  $$('.rule').forEach(function(r){rio.observe(r)});
+}
+var tl=$('#tl'),prog=$('#tlProg'),steps=$$('.step');
+function tlUpdate(){var r=tl.getBoundingClientRect(),vh=innerHeight,horiz=getComputedStyle(tl).display==='grid'&&innerWidth>=900;var p=Math.max(0,Math.min(1,(vh*.75-r.top)/(horiz?vh*.5:r.height)));if(RM)p=1;if(horiz){prog.style.width=(p*100)+'%';prog.style.height='1px'}else{prog.style.height=(p*(tl.offsetHeight-12))+'px';prog.style.width='1px'}steps.forEach(function(s,i){s.classList.toggle('on',p>=i/steps.length+.02)})}
+window.addEventListener('scroll',tlUpdate,{passive:true});window.addEventListener('resize',tlUpdate);
+
+/* ---------- fit matcher ---------- */
+var MQ=[
+ {k:'who',q:'Who are you?',o:[['creator','Creator or influencer'],['personal','Personal brand or coach'],['local','Local business'],['ecom','E-commerce or luxury brand'],['agency','Agency or high-growth company']]},
+ {k:'plat',q:'How many platforms should we manage?',o:[['1','1 platform'],['2','Up to 2 platforms'],['3','Up to 3 platforms']]},
+ {k:'need',q:'What matters most right now?',o:[['consistent','A consistent, professional presence'],['grow','Growing my audience and engagement'],['leads','Generating leads and enquiries'],['sponsor','Sponsorships and brand collaborations'],['identity','Building a clear brand identity'],['launch','Launching a campaign or product']]},
+ {k:'content',q:'What do you need for content?',o:[['ready','I create it; you plan and publish'],['design','Designed posts and stories'],['video','Short video editing'],['all','Content created end to end']]},
+ {k:'support',q:'How much support do you want?',o:[['light','WhatsApp support and a monthly check-in'],['mid','Priority support and regular meetings'],['high','A dedicated manager and weekly meetings']]},
+ {k:'stage',q:'Where are you now?',o:[['start','Just starting out'],['steady','Growing steadily'],['push','Ready for aggressive growth']]}
+];
+var mStep=0,mA={};
+function mLabel(k,v){var q=MQ.filter(function(x){return x.k===k})[0];var o=q.o.filter(function(x){return x[0]===v})[0];return o?o[1]:''}
+function matchCalc(a){
+  var sc=[0,0,0];function add(v){for(var i=0;i<3;i++)sc[i]+=v[i]}
+  add({creator:[1,1,0],personal:[0,1,1],local:[1,1,0],ecom:[0,0,1],agency:[0,0,1]}[a.who]);
+  add([[2,0,0],[0,2,0],[0,0,2]][+a.plat-1]);
+  add({consistent:[2,0,0],grow:[0,2,0],leads:[0,1,1],sponsor:[0,0,3],identity:[0,2,1],launch:[0,0,2]}[a.need]);
+  add({ready:[1,0,0],design:[0,1,0],video:[0,0,0],all:[0,0,1]}[a.content]);
+  add({light:[2,0,0],mid:[0,2,0],high:[0,0,2]}[a.support]);
+  add({start:[1,0,0],steady:[0,1,0],push:[0,0,2]}[a.stage]);
+  var floor=+a.plat-1,best=floor,i;for(i=floor;i<3;i++)if(sc[i]>sc[best])best=i;
+  var alt=-1;for(i=floor;i<3;i++)if(i!==best&&(alt<0||sc[i]>sc[alt]))alt=i;
+  if(alt>=0&&sc[best]-sc[alt]>2)alt=-1;
+  var p=best,id=PK[p].id,r=[],L=function(k){return mLabel(k,a[k])};
+  r.push('You want '+(a.plat==='1'?'1 platform':'up to '+a.plat+' platforms')+'. '+id+' manages '+['1 platform','up to 2 platforms','up to 3 platforms'][p]+'.');
+  var needR={
+    consistent:['Genesis includes content calendar planning, caption writing and post scheduling.','Prestige includes everything in Genesis plus 16 professional posts and 12 story designs a month.','Sovereign includes everything in Genesis and Prestige plus 25–30 professional posts a month and daily story management.'],
+    grow:['Genesis includes comment monitoring and a monthly performance report, which supports steady growth work.','Prestige adds community management, audience engagement support and a profile growth strategy.','Sovereign adds market and trend analysis, competitor benchmarking and priority community management.'],
+    leads:['Genesis does not itemise lead generation, so lead work appears below as add-ons.','Prestige includes lead generation guidance.','Sovereign includes an advanced lead generation strategy.'],
+    sponsor:['Influencer outreach and sponsorship research are included only in Sovereign. On Genesis they are add-ons.','Influencer outreach and sponsorship research are included only in Sovereign. On Prestige they are add-ons.','Sovereign includes influencer collaboration outreach and sponsorship opportunity research.'],
+    identity:['Genesis supports profile optimization and branding basics. Identity work appears below as add-ons.','Prestige includes a brand positioning consultation.','Sovereign includes personal brand development and a monthly brand audit.'],
+    launch:['Campaign planning and execution is included only in Sovereign. On Genesis it is an add-on.','Campaign planning and execution is included only in Sovereign. On Prestige it is an add-on.','Sovereign includes campaign planning and execution.']
+  };
+  r.push('Your priority is "'+L('need').toLowerCase()+'". '+needR[a.need][p]);
+  var cR={ready:'You create the content, so the plan centres on calendar planning, captions and scheduling, which every package includes.',design:['Genesis includes 8 static posts a month with basic graphic designing.','Prestige includes 16 professional posts and 12 story designs a month.','Sovereign includes 25–30 professional posts a month and daily story management.'][p],video:'Short video editing is not itemised in any package, so it appears below as an add-on.',all:['Genesis includes 8 static posts a month, so higher volume would mean a larger package.','Prestige includes 16 professional posts and 12 story designs a month.','Sovereign has the highest volume: 25–30 professional posts a month and daily story management.'][p]};
+  r.push('Content: '+cR[a.content]);
+  r.push('Support you chose: "'+L('support').toLowerCase()+'". '+['Genesis includes WhatsApp support and a 15-minute monthly strategy discussion.','Prestige includes priority support and two monthly strategy meetings.','Sovereign includes a dedicated account manager and weekly strategy meetings.'][p]);
+  if(a.stage==='start'&&p===0)r.push('Genesis keeps the monthly commitment lowest while you start.');
+  if(a.stage==='steady'&&p===1)r.push('Prestige is aimed at growing influencers, personal brands and small to medium businesses.');
+  if(a.stage==='push'&&p===2)r.push('You want aggressive growth, and Sovereign is the widest scope on offer.');
+  var kw={creator:['creator','influencer'],personal:['personal brand','coach','trainer'],local:['local','salon','clinic','restaurant','café','shop','small'],ecom:['e-commerce','luxury','brand'],agency:['agenc','startup']}[a.who];
+  var hit=PK[p].best.filter(function(b){return kw.some(function(k){return b.toLowerCase().indexOf(k)>-1})});
+  if(hit.length)r.push('Your profile matches '+id+'\'s "best for" list: '+hit.join(', ')+'.');
+  var ao=[];function A(n,t){if(!ao.some(function(x){return x[0]===n}))ao.push([n,t])}
+  if(a.content==='video')A('Reels and Short-Form Video Editing','You asked for short video editing, which no package itemises.');
+  if(a.content==='design'&&p===0){A('Carousel Design','Genesis includes static posts only; carousels add a swipe format.');A('Story Design','Genesis does not include story designs; Prestige includes 12 a month.')}
+  if(a.need==='sponsor'&&p<2){A('Sponsorship Prospect Research','Sponsorship research is built into Sovereign only, so on '+id+' it is an add-on.')}
+  if(a.need==='sponsor')A('Media Kit Design','A media kit presents you and your audience to brands, and no package includes one.');
+  if(a.need==='identity'){A('Brand Identity Kit','No package includes a brand identity kit.');A('Logo Design','Logo design is not part of any package.');if(p===0)A('Personal Brand Positioning','Positioning is included from Prestige upward, so on Genesis it is an add-on.')}
+  if(a.need==='leads'){A('Lead-Generation Campaign Support','Campaign support goes beyond the lead guidance or strategy inside the packages.');A('Meta Advertising Campaign Setup','No package itemises paid advertising.')}
+  if(a.need==='launch'){if(p<2)A('Launch Campaign Planning','Launch planning is an add-on outside Sovereign.');else A('Creative Campaign Assets','Sovereign plans the campaign; dedicated campaign visuals are quoted separately.')}
+  if(a.need==='grow')A(p===0?'Content Performance Audit':'Audience Research Report',p===0?'A one-off review of what has worked complements Genesis reporting.':'Audience research adds depth to the engagement work in your package.');
+  if(a.stage==='start')A('Profile Optimization','A clear profile helps new visitors decide to follow.');
+  ao=ao.slice(0,4);
+  var altTxt=alt<0?'':PK[alt].id+' is a close alternative if '+['you want the lowest monthly commitment and a lighter scope.','you want a balance of reach, support and strategy.','you want the widest scope, a dedicated manager and weekly meetings.'][alt];
+  return {p:p,reasons:r,ao:ao,alt:altTxt};
+}
+function renderMatch(){
+  var d=$('#match');if(!d)return;
+  if(mStep>=MQ.length){
+    var m=matchCalc(mA),p=PK[m.p];
+    d.innerHTML='<div class="bar"><i style="width:100%"></i></div><div class="rec"><div class="rec-pk"><span class="hrs">Suggested package</span><h3>'+p.id+'</h3><div class="tag" style="font-family:var(--serif);font-style:italic;color:var(--fg2);font-size:1.1rem">'+esc(p.tag)+'</div><div class="price">'+p.price+'<small>KWD / month</small></div><span class="hrs">'+esc(p.hrs)+'</span></div><div><h4>Why this package</h4><ul class="why">'+m.reasons.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+(m.alt?'<p class="small" style="margin-top:12px">'+esc(m.alt)+'</p>':'')+'</div>'+(m.ao.length?'<div><h4>Add-ons that may help</h4><div class="grid g2">'+m.ao.map(function(x){return '<div class="rec-ao"><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p><p class="small">Request a Quote</p></div>'}).join('')+'</div></div>':'')+'<p class="small">A starting point based on your answers and the published package details. It does not guarantee results. Final scope and add-on pricing are confirmed with you.</p></div><div class="dnav"><button class="btn solid" type="button" id="mApply">Add to my selection <span class="ar">→</span></button><button class="btn" type="button" id="mDet">Full details</button><button class="btn ghost" type="button" id="mBack">Back</button><button class="btn ghost" type="button" id="mRe">Restart</button></div>';
+    $('#mApply').onclick=function(){S.pkg=p.id;m.ao.forEach(function(x){if(!has(x[0]))S.svc.push(x[0])});render();$('#contact').scrollIntoView({behavior:RM?'auto':'smooth'})};
+    $('#mDet').onclick=function(e){pkDetail(m.p,e.currentTarget)};
+    $('#mBack').onclick=function(){mStep=MQ.length-1;renderMatch()};
+    $('#mRe').onclick=function(){mStep=0;mA={};renderMatch()};
+    return;
+  }
+  var q=MQ[mStep];
+  d.innerHTML='<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="'+MQ.length+'" aria-valuenow="'+mStep+'"><i style="width:'+(mStep/MQ.length*100)+'%"></i></div><p class="small">Question '+(mStep+1)+' of '+MQ.length+'</p><h3>'+esc(q.q)+'</h3><div class="opts">'+q.o.map(function(o){return '<button class="chip" type="button" data-v="'+o[0]+'" aria-pressed="'+(mA[q.k]===o[0])+'">'+esc(o[1])+'</button>'}).join('')+'</div><div class="dnav">'+(mStep>0?'<button class="btn ghost sm" type="button" id="mPrev">Back</button>':'')+'<button class="btn ghost sm" type="button" id="mRe">Restart</button></div>';
+  $$('.chip',d).forEach(function(b){b.onclick=function(){mA[q.k]=b.dataset.v;mStep++;renderMatch()}});
+  var pv=$('#mPrev');if(pv)pv.onclick=function(){mStep--;renderMatch()};
+  $('#mRe').onclick=function(){mStep=0;mA={};renderMatch()};
+}
+
+/* ---------- detail dialog ---------- */
+var dlgFrom=null;
+function ul(a){return '<ul>'+a.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'}
+function dlgOpen(html,from){dlgFrom=from||null;$('#dlgBody').innerHTML=html;$('#dlg').classList.add('open');$('#dlgClose').focus()}
+function dlgClose(){$('#dlg').classList.remove('open');if(dlgFrom&&document.contains(dlgFrom))dlgFrom.focus();else if(dlgFrom){var s=dlgFrom.dataset;var sel=s.d!==undefined?'[data-d="'+s.d+'"]':s.x!==undefined?'[data-x="'+s.x+'"]':null;var t=sel&&$(sel);if(t)t.focus()}}
+function pkDetail(i,from){
+  var p=PK[i],on=S.pkg===p.id;
+  var h='<h3 id="dlgTitle">'+p.id+'</h3><p style="margin-top:6px;font-family:var(--serif);font-style:italic;font-size:1.15rem">'+esc(p.tag)+'</p>';
+  h+='<h4>Price and effort</h4><p><b style="color:var(--fg)">'+p.price+' KWD per month</b> · '+esc(p.hrs)+'. Billed monthly on a rolling basis.</p>';
+  p.groups.forEach(function(g){h+='<h4>'+esc(g[0])+'</h4>'+ul(g[1])});
+  h+='<h4>Support, meetings and revisions</h4>'+ul(p.det);
+  h+='<h4>Reporting</h4><p>'+esc(p.rep)+'.</p>';
+  h+='<h4>Best for</h4>'+ul(p.best)+'<h4>Why it\'s beneficial</h4>'+ul(p.why);
+  h+='<h4>Not included</h4><p>Add-on services are quoted separately after an enquiry.</p>';
+  h+='<p class="dlg-note">Deliverables are as listed on the Nexus Prime website. Final scope is confirmed with you in writing before work starts. No result is guaranteed.</p>';
+  h+='<div class="dlg-cta"><button class="btn solid" type="button" id="dlgPick">'+(on?'Selected: '+p.id:'Choose '+p.id)+'</button><a class="btn" href="#contact" id="dlgEnq">Enquire about '+p.id+'</a></div>';
+  dlgOpen(h,from);
+  $('#dlgPick').onclick=function(){if(S.pkg!==p.id)S.pkg=p.id;render();dlgClose()};
+  $('#dlgEnq').onclick=function(){S.pkg=p.id;render();dlgClose()};
+}
+function aoDetail(i,from){
+  var a=AO[i],on=has(a[1]);
+  var h='<h3 id="dlgTitle">'+esc(a[1])+'</h3><p style="margin-top:6px;color:var(--muted);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase">'+a[0]+' · '+esc(AOC[a[0]])+'</p>';
+  h+='<h4>What this service involves</h4><p>'+esc(AOW[i])+'</p>';
+  h+='<h4>What we confirm when scoping</h4>'+ul(AOS[a[0]]);
+  if(AOV[i])h+='<h4>Related package inclusions</h4><p>'+esc(AOV[i])+' The add-on scope can differ from the package inclusion, and we confirm the difference in your quote.</p>';
+  h+='<h4>Pricing</h4><p>Request a Quote. Add-on prices are set per scope and are not listed.</p>';
+  h+='<p class="dlg-note">Quantities, formats, timelines and deliverables are agreed in your written quote.</p>';
+  h+='<div class="dlg-cta"><button class="btn solid" type="button" id="dlgPick">'+(on?'Remove from my selection':'Add to my selection')+'</button><a class="btn" href="#contact" id="dlgEnq">Enquire About This Service</a></div>';
+  dlgOpen(h,from);
+  $('#dlgPick').onclick=function(){toggleSvc(a[1]);dlgClose()};
+  $('#dlgEnq').onclick=function(){if(!has(a[1]))toggleSvc(a[1]);dlgClose()};
+}
+$('#dlgClose').addEventListener('click',dlgClose);
+$('#dlg').addEventListener('click',function(e){if(e.target===$('#dlg'))dlgClose()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&$('#dlg').classList.contains('open')){e.stopPropagation();dlgClose()}},true);
+$('#pkGrid').addEventListener('click',function(e){var b=e.target.closest('button[data-d]');if(b)pkDetail(+b.dataset.d,b)});
+$('#aoGrid').addEventListener('click',function(e){var b=e.target.closest('button[data-x]');if(b)aoDetail(+b.dataset.x,b)});
+
+/* ---------- 3D tier solids ---------- */
+var PHI=(1+Math.sqrt(5))/2;
+function mkSolid(v){var e=[],md=1e9,i,j;for(i=0;i<v.length;i++)for(j=i+1;j<v.length;j++){var d=Math.hypot(v[i][0]-v[j][0],v[i][1]-v[j][1],v[i][2]-v[j][2]);if(d<md)md=d}for(i=0;i<v.length;i++)for(j=i+1;j<v.length;j++){var d2=Math.hypot(v[i][0]-v[j][0],v[i][1]-v[j][1],v[i][2]-v[j][2]);if(Math.abs(d2-md)<1e-6)e.push([i,j])}return {v:v,e:e}}
+var SOLIDS=[
+ mkSolid([[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]].map(function(a){return a.map(function(x){return x*.62})})),
+ mkSolid([[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]].map(function(a){return a.map(function(x){return x*.95})})),
+ mkSolid((function(){var o=[],s=[-1,1],a,b;for(a=0;a<2;a++)for(b=0;b<2;b++){o.push([0,s[a],s[b]*PHI],[s[a],s[b]*PHI,0],[s[b]*PHI,0,s[a]])}return o.map(function(p){return p.map(function(x){return x*.6})})})())
+];
+var solidVis=false,solidHover=-1,solidT=0,solidLast=0,solidRun=false;
+function drawSolid(cv,k,t,hot){
+  var w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;var dpr=Math.min(window.devicePixelRatio||1,2);
+  if(cv.width!==Math.round(w*dpr)){cv.width=Math.round(w*dpr);cv.height=Math.round(h*dpr)}
+  var c=cv.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);
+  var S0=SOLIDS[k],cx=w/2,cy=h/2,sc=Math.min(w,h)*.42,ay=t*(hot?1.3:.6)+k,ax=.5+Math.sin(t*.35+k)*.25,az=t*.2;
+  var cyy=Math.cos(ay),syy=Math.sin(ay),cxx=Math.cos(ax),sxx=Math.sin(ax),czz=Math.cos(az),szz=Math.sin(az);
+  var P=S0.v.map(function(p){var x=p[0]*cyy+p[2]*syy,z=-p[0]*syy+p[2]*cyy,y=p[1];var y2=y*cxx-z*sxx,z2=y*sxx+z*cxx;var x3=x*czz-y2*szz,y3=x*szz+y2*czz;var f=3/(3+z2*.7);return {x:cx+x3*sc*f,y:cy-y3*sc*f,z:z2}});
+  var g=c.createRadialGradient(cx,cy,2,cx,cy,sc*1.5);g.addColorStop(0,'rgba(198,164,90,'+(hot?.22:.12)+')');g.addColorStop(1,'rgba(198,164,90,0)');c.fillStyle=g;c.fillRect(0,0,w,h);
+  c.lineWidth=1.1;c.lineCap='round';
+  S0.e.forEach(function(e){var a=P[e[0]],b=P[e[1]],d=(a.z+b.z)/2,al=.35+.5*((d+1.2)/2.4);c.strokeStyle='rgba(226,201,130,'+Math.max(.15,Math.min(1,al))+')';c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.stroke()});
+  P.forEach(function(p){c.fillStyle='rgba(245,242,235,'+Math.max(.3,Math.min(1,.55+p.z*.3))+')';c.beginPath();c.arc(p.x,p.y,1.8,0,7);c.fill()});
+}
+function solidLoop(now){
+  if(!solidRun)return;
+  if(solidVis){var dt=Math.min(now-solidLast,50);solidLast=now;solidT+=dt/1000;$$('.solid3d').forEach(function(cv){var k=+cv.dataset.k;drawSolid(cv,k,solidT,solidHover===k)})}else solidLast=now;
+  requestAnimationFrame(solidLoop)
+}
+function init3D(){
+  var grid=$('#pkGrid');
+  if(RM){$$('.solid3d').forEach(function(cv){drawSolid(cv,+cv.dataset.k,1.2,false)});new MutationObserver(function(){$$('.solid3d').forEach(function(cv){drawSolid(cv,+cv.dataset.k,1.2,false)})}).observe(grid,{childList:true});return}
+  new IntersectionObserver(function(en){solidVis=en[0].isIntersecting},{rootMargin:'80px'}).observe(grid);
+  grid.addEventListener('pointerover',function(e){var a=e.target.closest('.pk');solidHover=a?$$('.pk',grid).indexOf(a):-1});
+  grid.addEventListener('pointerleave',function(){solidHover=-1});
+  solidRun=true;requestAnimationFrame(solidLoop);
+}
+
+/* ---------- assistant ---------- */
+var aiFn=null;
+var WAN='https://wa.me/919654708824',MAIL='nexusprimesmm51@gmail.com';
+function waLink(t){return WAN+'?text='+encodeURIComponent(t)}
+function go(sel){var t=$(sel);if(t)t.scrollIntoView({behavior:RM?'auto':'smooth',block:'start'})}
+function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
+function copyTxt(t,btn){
+  var flash=function(m){if(!btn)return;var o=btn.dataset.l||btn.textContent;btn.dataset.l=o;btn.textContent=m;setTimeout(function(){btn.textContent=o},1800)};
+  try{navigator.clipboard.writeText(t).then(function(){flash('Copied')},function(){flash('Select and copy')})}catch(e){flash('Select and copy')}
+}
+function A_go(l,sel){return {l:l,go:sel}}
+function A_wa(l,t){return {l:l,wa:t}}
+function A_cp(l,t){return {l:l,cp:t}}
+function A_fn(l,f){return {l:l,fn:f}}
+
+function nz(s){return ' '+String(s).toLowerCase().replace(/[’'`]/g,'').replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim()+' '}
+function hitN(n,l){var c=0;l.forEach(function(w){if(w.charAt(w.length-1)==='*'){if(n.indexOf(' '+w.slice(0,-1))>-1)c++}else if(n.indexOf(' '+w+' ')>-1)c++});return c}
+
+function pkText(p){return p.id+' is '+p.price+' KWD a month and covers about '+p.hrs.replace(' / Month',' a month').toLowerCase()+'. '+p.tag+'\n\nIncludes: '+p.inc.slice(0,7).join('; ')+(p.inc.length>7?'; and more':'')+'.\n\nBest for: '+p.best.slice(0,5).join(', ')+'.\n\nSupport: '+p.det.join('; ')+'.'}
+function cmpText(ids){var rows=[1,2,3,4,5,7],names=['Platforms','Posts','Stories','Reporting','Meetings','Support'];return ids.map(function(i){var p=PK[i];return p.id+' ('+p.price+' KWD a month)\n'+rows.map(function(r,k){return names[k]+': '+CMP[r][i+1]}).join('\n')}).join('\n\n')}
+
+var AOA=[[/\blogo/,15],[/thumbnail/,11],[/carousel/,7],[/highlight/,13],[/media kit/,20],[/rate card/,29],[/\bbio\b|biography|about section/,19],[/hashtag/,4],[/caption/,3],[/\bshorts\b/,10],[/\breels?\b|video edit/,9],[/story design|\bstory\b|\bstories\b/,8],[/static post|post design/,6],[/brand guideline/,17],[/identity kit/,16],[/positioning/,18],[/pitch/,26],[/pipeline/,27],[/competitor/,30],[/audience research/,31],[/analytics report|monthly analytics/,33],[/workshop/,34],[/roadmap/,35],[/google business/,39],[/lead gen/,38],[/\blaunch/,41],[/repurpos/,12],[/calendar/,2],[/schedul/,5],[/profile optimi/,1],[/additional platform|extra platform/,0],[/sponsorship research|prospect/,22],[/outreach/,23],[/blueprint/,25],[/performance audit/,32],[/brand audit|profile audit/,21],[/meta ads|meta advertising|facebook ads|instagram ads/,36]];
+var MKA=[[/kuwait/,0],[/jordan/,1],[/dubai|\buae\b|emirates/,2],[/canada/,3],[/georgia/,4],[/united states|\busa\b|\bus\b|america/,5],[/india/,6],[/korea/,7]];
+
+var INT=[
+ {k:['thanks','thank you','thx','thankyou'],max:6,sure:1,t:'You are welcome. If anything else comes up, ask here or message the team on WhatsApp.',a:function(){return[A_wa('Message the team','Hello Nexus Prime')]}},
+ {k:['hi','hello','hey','hola','salam','good morning','good evening','good afternoon'],max:4,sure:1,t:'Hello, I am the Nexus Prime assistant. Ask me about packages, services, add-ons, markets or how we work.',a:function(){return[A_go('See packages','#packages'),A_go('Browse add-ons','#addons')]}},
+ {k:['contact','email','e mail','whatsapp','phone','call','number','reach','talk to','speak to','human','real person','team'],sure:1,t:'You can reach the Nexus Prime team by email at '+MAIL+' or on WhatsApp at +91 96547 08824. We reply within 24 hours.',a:function(){return[A_wa('Open WhatsApp','Hello Nexus Prime, I have a question.'),A_cp('Copy email',MAIL),A_go('Enquiry form','#contact')]}},
+ {k:['office','address','located','location','headquarter*','hq','based','where are you','visit','in person'],sure:1,t:'This website does not list a physical office. The eight countries we mention are service markets, not office locations. For meeting arrangements, contact the team and they will confirm.',a:function(){return[A_go('Service markets','#markets'),A_wa('Ask the team','Hello Nexus Prime, I have a question about meeting arrangements.')]}},
+ {k:['market*','countr*','where do you work','serve','serving','international','global','region*','abroad','overseas'],sure:1,t:'Nexus Prime serves clients in eight markets: Kuwait, Jordan, Dubai (UAE), Canada, Georgia, the United States, India and South Korea. These are service markets, not office locations.',a:function(){return[A_go('See the globe','#markets')]}},
+ {k:['pay','payment*','invoice*','bill*','deposit*','refund*','card','bank','transfer','upi','paypal','due','advance'],sure:1,t:'Package prices are monthly, in Kuwaiti dinar. Payment methods, billing dates and invoicing details are confirmed with you in writing before work starts. This website never asks for card or bank details, and payment requests only come from '+MAIL+' and +91 96547 08824.',a:function(){return[A_go('Payment guidelines','#payments'),A_wa('Ask about billing','Hello Nexus Prime, I have a question about billing.')]}},
+ {k:['discount*','coupon*','promo*','free trial','trial','student','sale'],sure:1,t:'This website does not list discounts or free trials, so I cannot promise one. The consultation itself is free, and the team can tell you what is available for your situation.',a:function(){return[A_wa('Ask the team','Hello Nexus Prime, I would like to ask about available offers.'),A_go('Book a consultation','#contact')]}},
+ {k:['add on','add ons','addon*','extras','extra services','optional'],t:'There are 42 add-ons in six groups: account management, creative and content, branding, influencer and creator support, strategy and research, and advertising. Add-on prices are set per scope, so none are listed. We send a fixed quote within 24 hours of your enquiry.',a:function(){return[A_go('Browse add-ons','#addons'),A_go('Start an enquiry','#contact')]}},
+ {k:['price*','pricing','cost*','how much','fee*','rate*','budget','kwd','dinar','expensive','cheap','afford*','charge*','monthly'],sure:1,t:'There are three monthly packages, priced in Kuwaiti dinar:\n\nGenesis: 650 KWD a month\nPrestige: 800 KWD a month\nSovereign: 1,200 KWD a month\n\nAdd-on services are quoted separately after an enquiry, so they have no list price.',a:function(){return[A_go('Compare packages','#cmpTbl'),A_go('Find my best package','#matcher')]}},
+ {k:['which package','which plan','recommend*','suit*','best for','should i choose','should i pick','right package','right plan','fit','choose','not sure which','starter','beginner','new creator','small business','popular'],t:'A starting point: Genesis suits one platform and a steady, professional presence. Prestige suits growing creators and businesses that want up to two platforms, more content and regular meetings; it is marked Most Popular. Sovereign suits established brands that want up to three platforms, campaigns, sponsorship outreach and a dedicated account manager.\n\nThe six-question matcher on this page gives a suggestion with reasons.',a:function(){return[A_go('Find my best package','#matcher'),A_go('Compare packages','#cmpTbl')]}},
+ {k:['compare','comparison','difference','differences','differ*','versus','vs'],t:null,sure:1,cmp:1},
+ {k:['package*','plan*','tier*','what do i get','include*','inclusion*','deliverable*'],t:'Nexus Prime has three monthly packages. Genesis (650 KWD) manages 1 platform with 8 static posts a month. Prestige (800 KWD) manages up to 2 platforms with 16 professional posts and 12 story designs a month. Sovereign (1,200 KWD) manages up to 3 platforms with 25–30 professional posts, daily story management and a dedicated account manager.',a:function(){return[A_go('See the packages','#packages'),A_go('Compare packages','#cmpTbl')]}},
+ {k:['contract*','lock in','lockin','commitment','cancel*','minimum','long term','month to month','rolling'],sure:1,t:'There is no long-term lock-in. Packages run on rolling monthly engagements.',a:function(){return[A_go('Payment guidelines','#payments')]}},
+ {k:['upgrade*','downgrade*','switch plan','change plan','mid month','pro rated','prorated'],sure:1,t:'You can upgrade mid-month. Upgrades are pro-rated, and new deliverables are rolled into your active calendar within 48 hours.',a:function(){return[A_go('See the packages','#packages')]}},
+ {k:['result*','how soon','how long','timeline','when will','roi','guarantee*','how fast','weeks'],t:'Early signals such as engagement and reach typically lift within 3 to 4 weeks. Brand authority, lead flow and follower growth build from month 2 as strategy and content compound. No specific result is guaranteed, and the team can talk through realistic expectations in a consultation.',a:function(){return[A_go('Book a consultation','#contact')]}},
+ {k:['report*','analytics','dashboard','metrics','insight*'],t:'Genesis includes a monthly performance report. Prestige adds bi-weekly reports. Sovereign includes a detailed monthly performance presentation with an analytics dashboard.',a:function(){return[A_go('Compare packages','#cmpTbl')]}},
+ {k:['account manager','point of contact','dedicated','strategist','meeting*','support','revision*'],t:'Support grows with the package. Genesis has WhatsApp support, 1 revision per design and a 15-minute monthly strategy discussion. Prestige has priority support, 2 revisions per design and two monthly strategy meetings. Sovereign has a dedicated account manager, weekly strategy meetings and unlimited reasonable revisions.',a:function(){return[A_go('Compare packages','#cmpTbl')]}},
+ {k:['start','get started','begin','onboard*','consultation*','book','sign up','join','hire','how do i start'],t:'Book a free consultation through the contact form or message us on WhatsApp. We map your goals, recommend a plan, and you can go live within about a week.',a:function(){return[A_go('Book a consultation','#contact'),A_wa('Start on WhatsApp','Hello Nexus Prime, I would like to book a consultation.')]}},
+ {k:['platform*','instagram','facebook','youtube','tiktok','linkedin','twitter','snapchat','pinterest','shorts'],t:'We specialise in Instagram, Facebook and YouTube. Genesis manages 1 platform, Prestige up to 2 and Sovereign up to 3. Other platforms are not listed on this website, so ask the team if you need one.',a:function(){return[A_go('See the packages','#packages'),A_wa('Ask about a platform','Hello Nexus Prime, I have a question about platforms.')]}},
+ {k:['content','create','creative','design*','video','edit*','caption*','post*','graphic*','story','stories'],t:'Yes. We handle strategy, captions, graphics, story designs and video edits, so you do not have to brief, design or post yourself. How much is included depends on the package: Genesis has 8 static posts a month, Prestige 16 professional posts and 12 story designs, Sovereign 25–30 professional posts and daily story management.',a:function(){return[A_go('Compare packages','#cmpTbl'),A_go('Browse services','#services')]}},
+ {k:['influencer*','sponsor*','collab*','brand deal*','creator*','partnership*','outreach'],t:'Influencer and creator support covers collaboration outreach, sponsorship research and campaign reporting. Influencer outreach and sponsorship research are built into Sovereign. On other packages they are add-ons, quoted after an enquiry.',a:function(){return[A_go('Influencer services','#services'),A_go('Browse add-ons','#addons')]}},
+ {k:['ads','advert*','paid','lead gen*','leads','google','whatsapp marketing','seo','campaign*'],t:'Advertising and performance support includes Meta Ads management, lead generation campaigns, website traffic campaigns, WhatsApp marketing setup and Google Business Profile optimization. Campaign planning and execution is built into Sovereign. Paid advertising is not itemised in any package, so it is quoted after an enquiry.',a:function(){return[A_go('Browse add-ons','#addons'),A_go('Start an enquiry','#contact')]}},
+ {k:['process','how does it work','how do you work','steps','workflow','discovery'],t:'Four steps. Discovery call: we learn your brand, goals and audience. Strategy building: we craft a custom social media strategy. Content creation and execution: we create, schedule and publish. Growth and reporting: we analyse performance, refine the strategy and plan next steps.',a:function(){return[A_go('See the process','#process')]}},
+ {k:['portfolio','case stud*','past work','examples','clients','testimonial*','reviews','proof','references','samples'],t:'Client case studies are published on this site once they are approved for display. The portfolio section shows how a project is presented, and it is a sample layout, not a client project. Ask the team if you would like to see relevant work.',a:function(){return[A_go('Portfolio','#portfolio'),A_wa('Ask to see work','Hello Nexus Prime, could I see work relevant to my business?')]}},
+ {k:['who are you','what is nexus','what do you do','company','agency','since','established','founded','2018','nexus prime'],t:'Nexus Prime is a social media management, influencer management and digital brand strategy company, established in 2018. We work with creators, brands and businesses on Instagram, Facebook and YouTube.',a:function(){return[A_go('Our services','#services'),A_go('Packages','#packages')]}},
+ {k:['service*','help with','do you do','manage','management'],t:'Services fall into seven areas: Social Media Management, Influencer Management, Digital Brand Strategy, Creator Growth, Creative Services, Campaign Planning, and Advertising and Performance Support. You can select the ones you want to discuss, and your selection travels into the enquiry form.',a:function(){return[A_go('Browse services','#services')]}}
+];
+
+function localAnswer(q){
+  var n=nz(q),words=n.trim().split(' ').length,i;
+  var ids=[];PK.forEach(function(p,k){var nm=p.id.toLowerCase();if(n.indexOf(' '+nm+' ')>-1||n.indexOf(' '+nm+'s ')>-1)ids.push(k)});
+  var cw=hitN(n,['compare','comparison','difference','differences','differ*','versus','vs','between','better']);
+  if(ids.length>1||(ids.length&&cw)||(!ids.length&&cw&&hitN(n,['package*','plan*','tier*']))){
+    var use=ids.length>1?ids:[0,1,2];return {sure:1,t:cmpText(use),a:[A_go('Open comparison table','#cmpTbl'),A_go('Find my best package','#matcher')]}}
+  if(ids.length===1){var p=PK[ids[0]],k=ids[0];return {sure:1,t:pkText(p),a:[A_fn('Select '+p.id,function(b){S.pkg=p.id;render();b.textContent='Selected ✓'}),A_fn('Full details',function(){pkDetail(k)}),A_go('Enquire','#contact')]}}
+  if(!hitN(n,['office','address','headquarter*','hq','based','located'])){
+    for(i=0;i<MKA.length;i++)if(MKA[i][0].test(n)){var m=MK[MKA[i][1]];
+      return {sure:1,t:'Yes. '+m.n+' is one of the eight markets Nexus Prime serves. It is a service market, not an office location. The team confirms scope and timings with you during your consultation.',a:[A_fn('Enquire for '+m.n,function(){S.market=m.n;render();go('#contact')}),A_go('See all markets','#markets')]}}
+  }
+  for(i=0;i<AOA.length;i++)if(AOA[i][0].test(n)){var ix=AOA[i][1],a=AO[ix];
+    return {sure:1,t:a[1]+' is an add-on in the "'+AOC[a[0]]+'" group. '+a[2]+(AOV[ix]?' '+AOV[ix]:'')+'\n\nAdd-on prices are set per scope, so there is no list price. We send a fixed quote within 24 hours of your enquiry.',a:[A_fn(has(a[1])?'In my enquiry ✓':'Add to my enquiry',function(b){if(!has(a[1]))toggleSvc(a[1]);b.textContent='In my enquiry ✓'}),A_fn('Details',function(){aoDetail(ix)}),A_go('All add-ons','#addons')]}}
+  var best=null,bs=0;
+  INT.forEach(function(it){if(it.max&&words>it.max)return;var s=hitN(n,it.k);if(s>bs){bs=s;best=it}});
+  if(!best)return null;
+  if(best.cmp)return {sure:1,t:cmpText([0,1,2]),a:[A_go('Open comparison table','#cmpTbl')]};
+  return {sure:!!best.sure,t:best.t,a:best.a?best.a():[]};
+}
+
+function aiRules(){
+  return 'You are the Nexus Prime website assistant. Answer visitor questions using ONLY the facts below. Be concise (under 120 words unless asked for more), warm and professional. Write plain text with short paragraphs and no markdown symbols. Rules: never invent prices, discounts, guarantees, results, timelines, policies, awards, clients, offices or addresses. Nexus Prime has no confirmed physical office; the listed countries are service markets only. Add-on prices are never listed: say they are quoted after an enquiry. If the facts do not answer the question, say the team will confirm it and point to the contact options. Do not promise outcomes. For payment methods, due dates, deposits and refunds, say these are confirmed with the visitor in writing before work starts. You may suggest sections of the page (Services, Packages, Add-ons, Markets, FAQ, Contact). Reply in the language the visitor uses.\n\nFACTS\nBrand: NEXUS PRIME, established 2018. Social media management, influencer management, digital brand strategy, creator support.\nContact: email '+MAIL+'; WhatsApp +91 96547 08824. Replies within 24 hours.\nPackages (monthly, KWD):\n'+PK.map(function(p){return '- '+p.id+' '+p.price+' KWD/month, '+p.hrs+'. Includes: '+p.inc.join('; ')+'. Best for: '+p.best.join(', ')+'. Details: '+p.det.join('; ')}).join('\n')+'\nService categories: '+CATS.map(function(c){return c.n+' ('+c.items.map(function(i){return i[0]}).join(', ')+')'}).join(' | ')+'\n42 add-ons (quote on request): '+AO.map(function(a){return a[1]}).join('; ')+'\nMarkets served: '+MK.map(function(m){return m.n}).join(', ')+'\nProcess: Discovery call; Strategy building; Content creation and execution; Growth and reporting.\nFAQ:\n'+FAQ.map(function(f){return 'Q: '+f[1]+' A: '+f[2]}).join('\n')+'\nPayment: package prices are monthly in KWD; add-ons quoted separately; rolling monthly engagements; upgrades pro-rated; the website never collects card or bank details.\nCurrent visitor selection: package='+(S.pkg||'none')+'; services='+(S.svc.join(', ')||'none');
+}
+function aiActs(t){var a=[];if(/genesis|prestige|sovereign|package/i.test(t))a.push(A_go('View packages','#packages'));if(/whatsapp|contact|team|consultation|enquir/i.test(t))a.push(A_go('Contact the team','#contact'));return a}
+var AIERR={rate_limited:'Too many questions just now. Please wait a moment and try again.',refused:'I cannot help with that request. Try asking about our services or packages.'};
+var FALL='I do not have that confirmed on this website, so I will not guess. The team can answer it directly.';
+
+function Chat(root,o){
+  var log=$('.chat-log',root),form=$('form',root),inp=$('input',root),send=$('.chat-send',root),stop=$('.chat-stop',root);
+  var turns=[],busy=false,ctl=null,skip=false,started=false;
+  function down(){log.scrollTop=log.scrollHeight}
+  function msg(cls){var w=document.createElement('div');w.className='m '+cls;if(cls==='a'){var av=document.createElement('i');av.className='av';av.textContent='N';av.setAttribute('aria-hidden','true');w.appendChild(av)}var col=document.createElement('div');col.className='col';var b=document.createElement('div');b.className='bub';col.appendChild(b);w.appendChild(col);log.appendChild(w);down();return b}
+  function acts(b,list){if(!list||!list.length)return;var row=document.createElement('div');row.className='acts';list.slice(0,3).forEach(function(x){var e;if(x.wa){e=document.createElement('a');e.href=waLink(x.wa);e.target='_blank';e.rel='noopener'}else{e=document.createElement('button');e.type='button'}e.className='chip';e.textContent=x.l;if(x.go)e.onclick=function(){if(o.onGo)o.onGo();go(x.go)};if(x.cp)e.onclick=function(){copyTxt(x.cp,e)};if(x.fn)e.onclick=function(){x.fn(e)};row.appendChild(e)});b.parentNode.appendChild(row);down()}
+  function type(b,t){return new Promise(function(res){if(RM||t.length<45){b.textContent=t;down();res();return}var w=t.split(/(\s+)/),i=0;b.textContent='';(function step(){if(skip||i>=w.length){b.textContent=t;down();res();return}i+=4;b.textContent=w.slice(0,i).join('');down();setTimeout(step,24)})()})}
+  function ui(on){busy=on;send.hidden=on;stop.hidden=!on}
+  function start(){if(started)return;started=true;var b=msg('a');b.textContent='Hello, I am the Nexus Prime assistant. Ask me anything about our services, packages, add-ons or markets.';var s=document.createElement('div');s.className='chat-sugg';o.sugg.forEach(function(t){var c=document.createElement('button');c.type='button';c.className='chip';c.textContent=t;c.onclick=function(){ask(t)};s.appendChild(c)});log.appendChild(s)}
+  async function ask(q){
+    q=String(q||'').trim().slice(0,500);if(!q||busy)return;
+    ui(true);skip=false;var sg=$('.chat-sugg',log);if(sg)sg.remove();
+    msg('u').textContent=q;turns.push({role:'user',content:q});turns=turns.slice(-10);while(turns.length&&turns[0].role!=='user')turns.shift();
+    var b=msg('a');b.innerHTML='<span class="dots" role="status" aria-label="Typing"><i></i><i></i><i></i></span>';
+    var loc=localAnswer(q),text=null,al=null,streamed=false,stopped=false;
+    if(aiFn&&!(loc&&loc.sure)){
+      ctl=new AbortController();
+      try{var r=await aiFn([{role:'user',content:aiRules()}].concat(turns),{cache:false,signal:ctl.signal,modelTier:'quick',onText:function(u){streamed=true;b.textContent=u.text;down()}});text=r.text;al=aiActs(text)}
+      catch(e){
+        if(e&&e.code==='cancelled'){stopped=true;text='Stopped.'}
+        else if(e&&e.text){text=e.text;al=aiActs(text)}
+        else{if(e&&e.code==='not_granted')aiFn=null;if(AIERR[e&&e.code]&&!loc){text=AIERR[e.code]}else if(loc){text=loc.t;al=loc.a;streamed=false}}
+      }
+      ctl=null;
+    }else{await wait(RM?0:380);if(loc){text=loc.t;al=loc.a}}
+    if(!text){text=FALL;al=[A_wa('Ask the team on WhatsApp','Hello Nexus Prime, I have a question: '+q),A_cp('Copy my question',q),A_cp('Copy email',MAIL)]}
+    if(streamed){b.textContent=text}else{await type(b,text)}
+    acts(b,al);
+    if(stopped)turns.pop();else turns.push({role:'assistant',content:text});
+    ui(false);if(FINE&&(document.activeElement===document.body||!document.activeElement))inp.focus();
+  }
+  form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value;inp.value='';ask(v)});
+  stop.addEventListener('click',function(){skip=true;if(ctl)ctl.abort()});
+  $('.chat-clear',root).addEventListener('click',function(){if(ctl)ctl.abort();skip=true;log.innerHTML='';turns=[];started=false;busy=false;send.hidden=false;stop.hidden=true;start()});
+  return {ask:ask,start:start,focus:function(){inp.focus()}};
+}
+
+var chatMain=null,chatPanel=null;
+var TOPICS=[['Packages and pricing',['How much does each package cost?','Which package should I choose?','What is the difference between Prestige and Sovereign?','Can I upgrade mid-month?']],['Services',['What platforms do you manage?','Do you create the content?','How do add-ons work?','Do you help with sponsorships?']],['Working together',['How do I get started?','How soon will I see results?','Is there a long-term contract?','What reporting do I get?']],['Markets and contact',['Do you work with clients in Canada?','Where is your office?','How does payment work?','How do I contact the team?']]];
+function openPanel(o){
+  var p=$('#aiPanel');p.classList.toggle('open',o);$('#aiFab').hidden=o;$('#aiFab').setAttribute('aria-expanded',o);$('#aiTease').hidden=true;store('npTease','1');
+  if(o){chatPanel.start();setTimeout(function(){$('#aiIn').focus()},30)}else $('#aiFab').focus();
+}
+var aiOpen=openPanel;
+async function initAI(){
+  chatMain=Chat($('#askChat'),{sugg:['What does Genesis include?','Which package suits a new creator?','Do you work with clients in Canada?','How do add-ons work?']});
+  chatPanel=Chat($('#aiPanel'),{sugg:['What does Genesis include?','Which package suits a new creator?','Do you work with clients in Canada?','How do add-ons work?'],onGo:function(){openPanel(false)}});
+  chatMain.start();
+  $('#askTopics').innerHTML=TOPICS.map(function(t){return '<div class="topic"><h4>'+esc(t[0])+'</h4><div class="opts">'+t[1].map(function(q){return '<button class="chip" type="button" data-q="'+esc(q)+'">'+esc(q)+'</button>'}).join('')+'</div></div>'}).join('');
+  $('#askTopics').addEventListener('click',function(e){var b=e.target.closest('button[data-q]');if(!b)return;chatMain.ask(b.dataset.q);var r=$('#askChat').getBoundingClientRect();if(r.top<70||r.bottom>innerHeight)$('#askChat').scrollIntoView({behavior:RM?'auto':'smooth',block:'center'})});
+  $('#aiFab').addEventListener('click',function(){openPanel(true)});
+  $('#aiClose').addEventListener('click',function(){openPanel(false)});
+  $('#aiTeaseX').addEventListener('click',function(){$('#aiTease').hidden=true;store('npTease','1')});
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-askopen]');if(!b)return;e.preventDefault();go('#ask');setTimeout(function(){$('#askIn').focus({preventScroll:true})},600)});
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-copy]');if(b)copyTxt(b.dataset.copy,b)});
+  setTimeout(function(){var ask=$('#ask').getBoundingClientRect();if(!store('npTease')&&!$('#aiPanel').classList.contains('open')&&!(ask.top<innerHeight&&ask.bottom>0)&&introEnded)$('#aiTease').hidden=false},9000);
+  try{aiFn=(window.claude&&window.claude.use)?await window.claude.use('sample'):null}catch(e){aiFn=null}
+  $$('.chat-sub').forEach(function(e){e.textContent=aiFn?"AI assistant · answers from this website's information":"Answers from this website's information"});
+}
+
+/* ---------- premium details ---------- */
+(function(){
+  var cv=$('#nexusNet');if(!cv)return;
+  var c=cv.getContext('2d'),dpr=Math.min(window.devicePixelRatio||1,2),vis=true,t0=performance.now();
+  var rings=[[.5,6,.00018],[.78,9,-.00013],[1.05,12,.0001]],N=[];
+  rings.forEach(function(r,ri){for(var i=0;i<r[1];i++)N.push({ri:ri,a:i/r[1]*Math.PI*2+ri*.7,w:.8+((i*7+ri*3)%5)/10})});
+  function size(){var w=cv.clientWidth;if(!w)return;cv.width=Math.round(w*dpr);cv.height=Math.round(w*dpr)}
+  function draw(now){
+    var t=now-t0,w=cv.width,u=w/2/1.25,cx=w/2,cy=w/2,rot=-.35,cr=Math.cos(rot),sr=Math.sin(rot);c.clearRect(0,0,w,w);
+    var P=N.map(function(n){var r=rings[n.ri],a=n.a+t*r[2],x=Math.cos(a)*r[0]*u,y=Math.sin(a)*r[0]*u*.6;return {x:cx+x*cr-y*sr,y:cy+x*sr+y*cr,w:n.w,z:Math.sin(a)}});
+    rings.forEach(function(r){c.save();c.translate(cx,cy);c.rotate(rot);c.beginPath();c.ellipse(0,0,r[0]*u,r[0]*u*.6,0,0,Math.PI*2);c.strokeStyle='rgba(198,164,90,.16)';c.lineWidth=dpr;c.stroke();c.restore()});
+    c.lineWidth=dpr*.8;var lim=u*.62;
+    for(var i=0;i<P.length;i++)for(var j=i+1;j<P.length;j++){var d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);if(d<lim){c.strokeStyle='rgba(226,201,130,'+(.24*(1-d/lim)).toFixed(3)+')';c.beginPath();c.moveTo(P[i].x,P[i].y);c.lineTo(P[j].x,P[j].y);c.stroke()}}
+    P.forEach(function(p){c.fillStyle='rgba(226,201,130,'+(.45+.4*p.w)+')';c.beginPath();c.arc(p.x,p.y,(1.6+p.w*1.6+p.z*.5)*dpr,0,7);c.fill()});
+  }
+  size();window.addEventListener('resize',function(){size();draw(performance.now())});
+  if(RM){draw(t0+4000);return}
+  new IntersectionObserver(function(en){vis=en[0].isIntersecting}).observe(cv);
+  (function loop(now){if(vis)draw(now);requestAnimationFrame(loop)})(performance.now());
+})();
+if(FINE&&!RM){var spf=0;document.addEventListener('pointermove',function(e){var el=e.target.closest&&e.target.closest('.card,.ao');if(!el||spf)return;spf=requestAnimationFrame(function(){spf=0;var r=el.getBoundingClientRect();el.style.setProperty('--sx',(e.clientX-r.left)+'px');el.style.setProperty('--sy',(e.clientY-r.top)+'px')})},{passive:true})}
+(function(){var pr=$('#prog');function u(){var h=document.documentElement.scrollHeight-innerHeight;pr.style.width=(h>0?Math.min(100,scrollY/h*100):0)+'%'}window.addEventListener('scroll',u,{passive:true});u()})();
+
+/* ---------- boot ---------- */
+renderTabs();buildAo();renderAoCats();renderFit();renderMk();renderDiag();renderFaq();render();filterAo();setupReveal();tlUpdate();bindTilt();init3D();renderMatch();initAI();
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&$('#aiPanel').classList.contains('open'))aiOpen(false)});
+})();
+</script>
+
+</body></html>
